@@ -109,185 +109,51 @@ function initApp() {
   function resetVisualStates() {
     cameraWorld.className = 'camera-world';
     monogramContainer.className = 'monogram-container';
-    hideAllNameChars();
+    showAllNameChars();
     coverCard.classList.remove('card-revealed');
     if (coverCreator) coverCreator.classList.remove('card-revealed');
   }
 
   /**
-   * PHASE 1: Zoom In ke sisi sebelah rumah (Rumah Bagian Kanan)
-   */
-  function goToPhase1() {
-    clearAllAnimationTimeouts();
-    currentPhase = 1;
-    updateStepPill(1);
-    setBadgeText("1/5 • Zoom In Sisi Rumah");
-
-    // Pastikan musik latar berputar
-    playMusic();
-
-    // Set camera to right side of house
-    cameraWorld.className = 'camera-world phase-house-right';
-    monogramContainer.className = 'monogram-container';
-    coverCard.classList.remove('card-revealed');
-
-    if (isAutoPlaying) {
-      const t = setTimeout(goToPhase2, 1700);
-      animationTimeouts.push(t);
-    }
-  }
-
-  /**
-   * PHASE 2: Pindah ke sisi kiri rumah (Veranda, tangga & pepohonan kiri)
-   */
-  function goToPhase2() {
-    clearAllAnimationTimeouts();
-    currentPhase = 2;
-    updateStepPill(2);
-    setBadgeText("2/5 • Pindah Sisi Kiri");
-
-    // Pan camera to left side of house
-    cameraWorld.className = 'camera-world phase-house-left';
-    monogramContainer.className = 'monogram-container';
-    coverCard.classList.remove('card-revealed');
-
-    if (isAutoPlaying) {
-      const t = setTimeout(goToPhase3, 1600);
-      animationTimeouts.push(t);
-    }
-  }
-
-  /**
-   * PHASE 3: Pindah ke sisi atas (Langit / kanopi di atas rumah)
-   */
-  function goToPhase3() {
-    clearAllAnimationTimeouts();
-    currentPhase = 3;
-    updateStepPill(3);
-    setBadgeText("3/5 • Pindah Sisi Atas");
-
-    // Pan camera up to top area
-    cameraWorld.className = 'camera-world phase-sky-top';
-    monogramContainer.className = 'monogram-container';
-    coverCard.classList.remove('card-revealed');
-
-    if (isAutoPlaying) {
-      const t = setTimeout(goToPhase4, 1500);
-      animationTimeouts.push(t);
-    }
-  }
-
-  /**
-   * PHASE 4: Pada sisi atas munculkan inisial N & R polos secara elegan
-   */
-  function goToPhase4() {
-    clearAllAnimationTimeouts();
-    currentPhase = 4;
-    updateStepPill(4);
-    setBadgeText("4/5 • Munculkan Inisial N & R");
-
-    // Camera stays at top
-    cameraWorld.className = 'camera-world phase-sky-top';
-    
-    // Ensure trailing characters are hidden so only N & R is visible
-    hideAllNameChars();
-
-    // Reveal Monogram N & R at top with dynamic entrance
-    monogramContainer.className = 'monogram-container state-monogram-top';
-    coverCard.classList.remove('card-revealed');
-
-    if (isAutoPlaying) {
-      // Tampilkan inisial N & R secara elegan selama 1200ms sebelum mulai zoom out
-      const t = setTimeout(goToPhase5, 1200);
-      animationTimeouts.push(t);
-    }
-  }
-
-  /**
-   * PHASE 5: Zoom out ke tampilan penuh dengan inisial N & R tetap utuh
-   * Selesaikan dulu gerakan zoom out dan penempatan N & R ke posisi header,
-   * baru setelah mendarat tenang di posisi akhir, ketikkan nama lengkapnya.
-   */
-  function goToPhase5() {
-    clearAllAnimationTimeouts();
-    currentPhase = 5;
-    updateStepPill(5);
-    setBadgeText("5/5 • Zoom Out & Penempatan Inisial");
-
-    // Camera smoothly zooms out to full view (1.9s transition)
-    cameraWorld.className = 'camera-world phase-zoom-out';
-
-    // Monogram smoothly glides to final header position keeping N & R intact (no expansion yet)
-    monogramContainer.className = 'monogram-container state-zooming-out';
-    coverCard.classList.remove('card-revealed');
-
-    // Mendaratkan kamera dan langsung memekarkan nama 'iar' & 'eski' serta THE WEDDING OF & tanggal bersamaan
-    const t = setTimeout(revealNamesTogether, 1900);
-    animationTimeouts.push(t);
-  }
-
-  /**
-   * REVEAL NAMES TOGETHER:
-   * Memasukkan huruf 'iar', 'eski', label 'THE WEDDING OF', dan tanggal pernikahan
-   * secara bersamaan serentak setelah kamera dan inisial N & R mendarat tenang di posisi cover.
-   */
-  function revealNamesTogether() {
-    clearAllAnimationTimeouts();
-    setBadgeText("5/5 • Menampilkan Sampul Lengkap");
-
-    // Pastikan seluruh karakter aktif
-    showAllNameChars();
-
-    // Masuk bersamaan: 'iar' & 'eski', 'THE WEDDING OF', divider ❖, dan tanggal pernikahan
-    monogramContainer.className = 'monogram-container state-names-revealed state-cover-final';
-
-    // Pastikan musik latar berputar saat sampul lengkap mulai terlihat
-    playMusic();
-
-    // Lanjut ke Phase 6 untuk memunculkan Kartu Undangan Tamu bersamaan dengan create by
-    if (isAutoPlaying) {
-      const t = setTimeout(goToPhase6, 900);
-      animationTimeouts.push(t);
-    }
-  }
-
-  /**
-   * PHASE 6: Selesai - Tampilkan Tombol Buka Undangan & Kartu Tamu
-   */
-  function goToPhase6() {
-    clearAllAnimationTimeouts();
-    currentPhase = 6;
-    updateStepPill(6);
-    if (progressFill) progressFill.style.width = '100%';
-    setBadgeText("Sampul Lengkap • Siap Dibuka");
-
-    cameraWorld.className = 'camera-world phase-zoom-out';
-    monogramContainer.className = 'monogram-container state-names-revealed state-cover-final';
-    showAllNameChars();
-    coverCard.classList.add('card-revealed');
-    if (coverCreator) coverCreator.classList.add('card-revealed');
-
-    // Pastikan musik terputar saat seluruh halaman sampul selesai ditampilkan
-    playMusic();
-  }
-
-  /**
-   * Start or Replay the full animation sequence
+   * KONSEP 1: SINEMATIK ELEGAN (KEN BURNS & SOFT BLOOM)
+   * - Latar pemandangan rumah adat bergerak anggun (Ken Burns sinematik).
+   * - Judul & nama 'Niar & Reski' mekar dengan pendaran cahaya lembut (soft bloom & blur-to-clear).
+   * - Kartu tamu, tombol buka undangan, dan kredit creator muncul mulus dalam ~1 detik.
    */
   function startSequence() {
     clearAllAnimationTimeouts();
     isAutoPlaying = true;
     resetVisualStates();
-    if (progressFill) progressFill.style.width = '0%';
-    setBadgeText("Memulai Animasi...");
-
-    // Putar musik latar
     playMusic();
+    setBadgeText("The Wedding of Niar & Reski");
 
-    // Start with a gentle pause then launch Phase 1
-    const t = setTimeout(goToPhase1, 400);
-    animationTimeouts.push(t);
+    // Langkah 1: Pendaran Cahaya Lembut & Mekarkan Monogram/Nama (280ms)
+    const t1 = setTimeout(() => {
+      monogramContainer.classList.add('bloom-revealed');
+    }, 280);
+    animationTimeouts.push(t1);
+
+    // Langkah 2: Munculkan Kartu Tamu & Tombol Buka Undangan bersamaan dengan creator (1000ms)
+    const t2 = setTimeout(() => {
+      coverCard.classList.add('card-revealed');
+      if (coverCreator) coverCreator.classList.add('card-revealed');
+    }, 1000);
+    animationTimeouts.push(t2);
   }
+
+  function goToPhase6() {
+    clearAllAnimationTimeouts();
+    monogramContainer.classList.add('bloom-revealed');
+    showAllNameChars();
+    coverCard.classList.add('card-revealed');
+    if (coverCreator) coverCreator.classList.add('card-revealed');
+    playMusic();
+  }
+  function goToPhase1() { startSequence(); }
+  function goToPhase2() { startSequence(); }
+  function goToPhase3() { startSequence(); }
+  function goToPhase4() { startSequence(); }
+  function goToPhase5() { startSequence(); }
 
   // Interactive timeline buttons (Step pills if present)
   if (stepPills && stepPills.length) {
@@ -595,19 +461,6 @@ function initApp() {
       case 6: goToPhase6(); break;
     }
 
-    if (urlParams.get('sheet') === '1') {
-      invitationSheet.classList.add('sheet-opened');
-      if (floatingActionStack) floatingActionStack.classList.add('stack-active');
-      const targetScroll = parseInt(urlParams.get('scroll') || '-1');
-      if (targetScroll >= 0) {
-        invitationSheet.scrollTop = targetScroll;
-      } else {
-        openScrollTimeout = setTimeout(() => {
-          startAutoScroll();
-        }, 850);
-      }
-    }
-
     // Re-enable smooth transition for subsequent interactions
     setTimeout(() => {
       cameraWorld.style.transition = '';
@@ -620,6 +473,20 @@ function initApp() {
   } else {
     // Launch initial animation sequence on page load
     startSequence();
+  }
+
+  // Open Sheet directly if requested via URL (?sheet=1)
+  if (urlParams.get('sheet') === '1') {
+    invitationSheet.classList.add('sheet-opened');
+    if (floatingActionStack) floatingActionStack.classList.add('stack-active');
+    const targetScroll = parseInt(urlParams.get('scroll') || '-1');
+    if (targetScroll >= 0) {
+      invitationSheet.scrollTop = targetScroll;
+    } else {
+      openScrollTimeout = setTimeout(() => {
+        startAutoScroll();
+      }, 850);
+    }
   }
 }
 

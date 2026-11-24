@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>The Wedding of Niar & Reski</title>
+  
+  <!-- Google Fonts Preconnect & Stylesheet with Fallbacks -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- App Container (supports responsive mobile preview on desktop & native fullscreen on mobile) -->
+  <div class="app-viewport" id="appViewport">
+    
+    <!-- Background Camera Container (Cinematic Pan & Zoom Viewport) -->
+    <div class="camera-viewport" id="cameraViewport">
+      <div class="camera-world" id="cameraWorld">
+        <img src="sampul.jpg" alt="Sampul Undangan Niar & Reski" class="invitation-bg-img" id="invitationBg">
+        
+        <!-- Soft Atmospheric Overlay Layers (Sun rays, subtle golden sparkle, depth lighting) -->
+        <div class="cinematic-lighting"></div>
+        <div class="particles-layer" id="particlesLayer"></div>
+      </div>
+    </div>
+
+    <!-- UI Overlay for Dynamic Opening Animation -->
+    <div class="animation-stage-overlay" id="stageOverlay">
+
+      <!-- Monogram / Typography Floating Layer -->
+      <div class="monogram-container" id="monogramContainer">
+        
+        <!-- Subtitle (fades in during zoom out) -->
+        <div class="the-wedding-label" id="weddingLabel">THE WEDDING OF</div>
+
+        <!-- The Morphing Couple Name: N & R -> Niar & Reski (Clean Plain Typography) -->
+        <div class="names-typography" id="namesTypography">
+          <!-- Groom: N -> Niar -->
+          <span class="name-word groom" id="groomWord">
+            <span class="letter-initial" id="initialN">N</span>
+            <span class="letters-rest" id="restIar">
+              <span class="char" id="charI">i</span><span class="char" id="charA">a</span><span class="char" id="charR">r</span>
+            </span>
+          </span>
+
+          <!-- Ampersand & -->
+          <span class="ampersand-symbol" id="ampersandSymbol">&</span>
+
+          <!-- Bride: R -> Reski -->
+          <span class="name-word bride" id="brideWord">
+            <span class="letter-initial" id="initialR">R</span>
+            <span class="letters-rest" id="restEski">
+              <span class="char" id="charE">e</span><span class="char" id="charS">s</span><span class="char" id="charK">k</span><span class="char" id="charI2">i</span>
+            </span>
+          </span>
+        </div>
+
+        <!-- Decorative Floral Divider & Sub-info (fades in during zoom out) -->
+        <div class="monogram-divider" id="monogramDivider">
+          <span class="divider-line left"></span>
+          <span class="divider-gem">❖</span>
+          <span class="divider-line right"></span>
+        </div>
+
+        <div class="wedding-date-tag" id="weddingDateTag">AHAD, 20 DESEMBER 2026</div>
+      </div>
+
+      <!-- Guest Card & Open Invitation Button (Reveals after zoom-out) -->
+      <div class="invitation-cover-card" id="coverCard">
+        <div class="card-inner">
+          <div class="guest-greeting">Kepada Yth.</div>
+          <div class="guest-salutation">Bapak/Ibu/Saudara/i</div>
+          <div class="guest-name" id="guestName">Tamu Undangan</div>
+          <p class="guest-note">Mohon maaf bila ada kesalahan penulisan nama/gelar</p>
+          
+          <button class="btn-open-invitation" id="btnOpenInvitation">
+            <span class="btn-icon">💌</span>
+            <span class="btn-text">Buka Undangan</span>
+            <span class="btn-shine"></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- High-Contrast Creator Credit Outside Card at Bottom -->
+      <div class="cover-creator" id="coverCreator">
+        <span class="cover-creator-text">create by ainulmtqn</span>
+      </div>
+
+    </div>
+
+    <!-- Full Invitation Sheet Modal (Baroque Luxury Vintage - Matching Reference) -->
+    <div class="invitation-sheet" id="invitationSheet">
+      <div class="sheet-handle" id="sheetHandle">
+        <span class="handle-bar"></span>
+      </div>
+
+      <button class="close-sheet-btn" id="btnCloseSheet" title="Tutup">✕</button>
+
+      <!-- Decorative Victorian Lace Top Border -->
+      <div class="sheet-lace-header"></div>
+
+      <div class="sheet-content">
+        <!-- Bismillah & Quranic Verse -->
+        <div class="sheet-section verse-section">
+          <div class="bismillah-arabic">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
+          <p class="bismillah-meaning">
+            "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang."
+          </p>
+          <div class="verse-reference">(QS. Ar-Rum: 21)</div>
+        </div>
+
+        <!-- Section 1: Calligraphy & Couple in Oval Baroque Gold Frame -->
+        <div class="sheet-section couple-hero-section">
+          <div class="hero-calligraphy-sub">The Wedding of</div>
+          <h1 class="hero-calligraphy-names">Niar & Reski</h1>
+          <div class="couple-oval-wrapper">
+            <img src="assets/couple_frame.png" alt="Niar & Reski" class="couple-baroque-photo">
+          </div>
+          <div class="parents-honor-box">
+            <div class="honor-card">
+              <h2 class="honor-name">Niar Rahmadani, S.Pd.</h2>
+              <p class="honor-parents">Putri tercinta dari<br><strong>Bpk. H. Abd. Rahim</strong> & <strong>Ibu Hj. Maryam</strong></p>
+            </div>
+            <div class="honor-ampersand">&</div>
+            <div class="honor-card">
+              <h2 class="honor-name">Reski Pratama, S.T.</h2>
+              <p class="honor-parents">Putra tercinta dari<br><strong>Bpk. Ir. H. Syamsuddin</strong> & <strong>Ibu Hj. Nursiah</strong></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Decorative Divider -->
+        <div class="vintage-divider">
+          <span class="divider-line"></span>
+          <span class="divider-flourish">❖</span>
+          <span class="divider-line"></span>
+        </div>
+
+        <!-- Section 2: Deckle-Edge Welcome Parchment Card with Pearl Pin -->
+        <div class="sheet-section welcome-card-section">
+          <div class="deckle-parchment-card">
+            <div class="card-pearl-pin">
+              <img src="assets/pearl_brooch.png" alt="Pearl Brooch" class="pearl-pin-img">
+            </div>
+            <h2 class="card-script-title">Kepada Keluarga & Sahabat Tercinta</h2>
+            <p class="card-lead-text">
+              Dengan penuh rasa syukur dan memohon ridho Allah SWT, kami mengundang Bapak/Ibu/Saudara/i untuk hadir dan merayakan hari istimewa pernikahan kami:
+            </p>
+            <div class="wedding-date-highlight">
+              <span class="date-digits">20 . 12 . 2026</span>
+              <span class="date-day-label">Ahad, 20 Desember 2026</span>
+            </div>
+            <p class="card-sub-text">
+              Kehadiran serta doa restu Anda merupakan anugerah terindah dan kebahagiaan yang tak terhingga bagi langkah awal perjalanan baru kami.
+            </p>
+            <div class="card-corner-botanical">
+              <img src="assets/dried_flower.png" alt="Botanical Sprig" class="corner-flower-img">
+            </div>
+          </div>
+        </div>
+
+        <!-- Decorative Lace Band -->
+        <div class="lace-band-separator"></div>
+
+        <!-- Section 3: Timeline of Events ("Rangkaian Acara") with Vintage Pocket Watch -->
+        <div class="sheet-section timeline-section">
+          <h2 class="section-script-title">Rangkaian Acara</h2>
+          <div class="timeline-container">
+            <div class="timeline-tree">
+              <!-- Node 1: Akad Nikah -->
+              <div class="timeline-node">
+                <div class="timeline-node-time">09:00 WITA</div>
+                <div class="timeline-node-title">Akad Nikah</div>
+                <div class="timeline-node-desc">Kediaman Mempelai Wanita</div>
+              </div>
+              <!-- Node 2: Ramah Tamah -->
+              <div class="timeline-node">
+                <div class="timeline-node-time">11:00 WITA</div>
+                <div class="timeline-node-title">Ramah Tamah & Sesi Foto</div>
+              </div>
+              <!-- Node 3: Resepsi Pernikahan -->
+              <div class="timeline-node highlight-node">
+                <div class="timeline-node-time">19:00 WITA - Selesai</div>
+                <div class="timeline-node-title">Resepsi Pernikahan</div>
+                <div class="timeline-node-desc">Grand Ballroom Hotel Sahid</div>
+              </div>
+            </div>
+            <!-- Vintage Watch Illustration on the right -->
+            <div class="timeline-watch-wrapper">
+              <img src="assets/vintage_watch.png" alt="Vintage Pocket Watch" class="vintage-watch-img">
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 4: Venue & Location on Antique Silver Tray -->
+        <div class="sheet-section venue-section">
+          <div class="antique-tray-container">
+            <div class="tray-card-content">
+              <h2 class="tray-script-title">Lokasi Acara</h2>
+              <h3 class="tray-venue-name">Grand Ballroom Hotel Sahid</h3>
+              <p class="tray-venue-address">
+                Jl. Sam Ratulangi No. 33, Makassar, Sulawesi Selatan
+              </p>
+              <a href="https://maps.google.com/?q=Hotel+Sahid+Makassar" target="_blank" rel="noopener noreferrer" class="btn-maps-vintage">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="maps-icon">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                  <circle cx="12" cy="9" r="2.5"/>
+                </svg>
+                <span>Buka Google Maps</span>
+              </a>
+            </div>
+            <div class="tray-botanical-accent">
+              <img src="assets/dried_flower.png" alt="Dried Flower" class="tray-flower-img">
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 5: Dress Code & 5 Oval Golden Color Swatches -->
+        <div class="sheet-section dresscode-section">
+          <h2 class="section-script-title">Panduan Busana</h2>
+          <div class="dresscode-subtitle">Dress Code & Palet Warna</div>
+          <p class="dresscode-notice">
+            Kami sangat bersyukur dan berbahagia apabila Bapak/Ibu/Saudara/i berkenan hadir mengenakan busana dengan panduan warna yang selaras berikut:
+          </p>
+
+          <!-- 5 Oval Color Swatches matching cover palette -->
+          <div class="palette-swatches-grid">
+            <div class="swatch-item">
+              <div class="swatch-oval" style="background: #8c3f49;" title="Rose"></div>
+              <span class="swatch-label">Rose</span>
+            </div>
+            <div class="swatch-item">
+              <div class="swatch-oval" style="background: #443026;" title="Espresso"></div>
+              <span class="swatch-label">Espresso</span>
+            </div>
+            <div class="swatch-item">
+              <div class="swatch-oval" style="background: #8c6853;" title="Sepia"></div>
+              <span class="swatch-label">Sepia</span>
+            </div>
+            <div class="swatch-item">
+              <div class="swatch-oval" style="background: #748567;" title="Sage"></div>
+              <span class="swatch-label">Sage</span>
+            </div>
+            <div class="swatch-item">
+              <div class="swatch-oval" style="background: #f5ecde;" title="Ivory"></div>
+              <span class="swatch-label">Ivory</span>
+            </div>
+          </div>
+
+          <p class="dresscode-foot-note">
+            *Mohon untuk menghindari busana putih polos demi menghormati gaun mempelai wanita.
+          </p>
+        </div>
+
+        <!-- Section 6: Outfit Inspiration Photo Gallery -->
+        <div class="sheet-section inspiration-section">
+          <h2 class="section-script-title">Inspirasi Busana</h2>
+          <div class="inspiration-photo-frame">
+            <img src="assets/outfit_inspiration.png" alt="Inspirasi Busana Tamu" class="inspiration-img">
+          </div>
+        </div>
+
+        <!-- Section 7: Special Note / Etiquette on Deckle Parchment Card -->
+        <div class="sheet-section">
+          <div class="deckle-parchment-card">
+            <div class="card-pearl-pin">
+              <img src="assets/pearl_brooch.png" alt="Pearl Pin" class="pearl-pin-img">
+            </div>
+            <h2 class="card-script-title">Doa & Catatan Khusus</h2>
+            <p class="card-lead-text">
+              Kami sangat mencintai anak-anak, namun format dan susunan prosesi acara kami dirancang dengan konsep yang lebih intim dan formal.
+            </p>
+            <p class="card-sub-text">
+              Kami akan sangat berterima kasih apabila Bapak/Ibu/Saudara/i dapat senantiasa mendampingi dan menjaga buah hati tercinta selama acara berlangsung agar suasana tetap khidmat dan nyaman bagi semua pihak.
+            </p>
+          </div>
+        </div>
+
+        <!-- Section 8: Information & Questions Envelope Card -->
+        <div class="sheet-section contact-envelope-section">
+          <div class="envelope-card-container">
+            <div class="envelope-inner-card">
+              <h2 class="envelope-script-title">Informasi & Pertanyaan</h2>
+              <p class="envelope-desc">
+                Bila ada pertanyaan seputar lokasi, akomodasi, atau konfirmasi, narahubung kami siap membantu Anda:
+              </p>
+              <div class="organizer-badge">Sahabat Wedding Organizer</div>
+              <div class="contact-action-row">
+                <a href="tel:+6281234567890" class="btn-contact-icon" title="Telepon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                  </svg>
+                </a>
+                <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer" class="btn-contact-icon" title="WhatsApp">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19.01L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M9.53 7.33C9.33 7.33 9 7.41 8.74 7.69C8.47 7.97 7.73 8.67 7.73 10.08C7.73 11.49 8.76 12.85 8.91 13.04C9.05 13.24 11.08 16.38 14.19 17.72C14.93 18.04 15.51 18.23 15.96 18.37C16.7 18.61 17.37 18.57 17.9 18.49C18.5 18.4 19.74 17.74 20 17.01C20.26 16.28 20.26 15.65 20.18 15.52C20.1 15.39 19.89 15.31 19.57 15.15C19.25 14.99 17.68 14.22 17.39 14.11C17.1 14.01 16.89 13.96 16.68 14.28C16.47 14.6 15.87 15.31 15.68 15.52C15.5 15.73 15.31 15.76 15 15.6C14.68 15.44 13.66 15.11 12.45 14.03C11.51 13.19 10.87 12.15 10.69 11.83C10.5 11.52 10.67 11.35 10.83 11.19C10.97 11.05 11.14 10.83 11.3 10.64C11.46 10.45 11.51 10.32 11.62 10.11C11.72 9.9 11.67 9.72 11.59 9.56C11.51 9.4 10.9 7.9 10.64 7.28C10.39 6.68 10.14 6.76 9.95 6.75C9.77 6.74 9.56 6.74 9.35 6.74L9.53 7.33Z"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 9: Guest Attendance Form / RSVP -->
+        <div class="sheet-section rsvp-section">
+          <h2 class="section-script-title">Konfirmasi Kehadiran</h2>
+          <p class="rsvp-intro">
+            Mohon kesediaan Bapak/Ibu/Saudara/i untuk mengonfirmasi kehadiran demi kelancaran persiapan jamuan:
+          </p>
+
+          <form class="vintage-rsvp-form" id="rsvpForm" onsubmit="return false;">
+            <div class="form-group">
+              <label for="rsvpName" class="form-label">1. Nama Lengkap</label>
+              <input type="text" id="rsvpName" class="form-input-vintage" placeholder="Nama Anda / Tamu Undangan" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">2. Konfirmasi Kehadiran</label>
+              <div class="radio-options-row">
+                <label class="radio-custom">
+                  <input type="radio" name="attendance" value="Hadir" checked>
+                  <span class="radio-dot"></span>
+                  <span class="radio-text">Ya, Saya Hadir</span>
+                </label>
+                <label class="radio-custom">
+                  <input type="radio" name="attendance" value="Tidak Hadir">
+                  <span class="radio-dot"></span>
+                  <span class="radio-text">Maaf, Belum Bisa Hadir</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="guestCount" class="form-label">3. Jumlah Tamu</label>
+              <select id="guestCount" class="form-select-vintage">
+                <option value="1">1 Orang</option>
+                <option value="2">2 Orang</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="rsvpWish" class="form-label">4. Doa & Pesan Ucapan</label>
+              <textarea id="rsvpWish" class="form-textarea-vintage" rows="3" placeholder="Tuliskan doa & ucapan untuk Niar & Reski..."></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit-vintage" id="btnSubmitRsvp">
+              Kirim Konfirmasi Kehadiran 💌
+            </button>
+            <div class="rsvp-status-alert" id="rsvpStatusAlert" style="display:none;"></div>
+          </form>
+
+          <!-- List of wishes -->
+          <div class="wishes-vintage-list" id="wishesList">
+            <div class="wish-item-vintage">
+              <strong>Keluarga Besar Rahmat</strong>
+              <p>Selamat berbahagia untuk Niar & Reski! Semoga menjadi keluarga yang sakinah, mawaddah, warahmah.</p>
+            </div>
+            <div class="wish-item-vintage">
+              <strong>Sahabat Teknik</strong>
+              <p>Barakallahu lakum wa baraka alaikum wa jama'a bainakuma fi khair. Lancar sampai hari H!</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 10: Countdown Timer ("Menuju Hari Bahagia") -->
+        <div class="sheet-section countdown-vintage-section">
+          <div class="countdown-decor-top">
+            <img src="assets/vintage_key.png" alt="Vintage Key" class="countdown-key-img">
+          </div>
+          <h2 class="section-script-title">Menuju Hari Bahagia</h2>
+          <div class="countdown-clock-row">
+            <div class="clock-unit">
+              <span class="clock-number" id="daysNum">00</span>
+              <span class="clock-label">Hari</span>
+            </div>
+            <span class="clock-colon">:</span>
+            <div class="clock-unit">
+              <span class="clock-number" id="hoursNum">00</span>
+              <span class="clock-label">Jam</span>
+            </div>
+            <span class="clock-colon">:</span>
+            <div class="clock-unit">
+              <span class="clock-number" id="minsNum">00</span>
+              <span class="clock-label">Menit</span>
+            </div>
+            <span class="clock-colon">:</span>
+            <div class="clock-unit">
+              <span class="clock-number" id="secsNum">00</span>
+              <span class="clock-label">Detik</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 11: Polaroid 3-Photo Couple Strip Gallery -->
+        <div class="sheet-section polaroid-section">
+          <div class="polaroid-strip-card">
+            <img src="assets/polaroid_strip.png" alt="Kenangan Niar & Reski" class="polaroid-strip-img">
+          </div>
+          <div class="closing-love-message">
+            <p class="closing-title">SAMPURNA KASIH KAMI DENGAN KEHADIRAN ANDA</p>
+            <p class="closing-sign-lead">Dengan penuh cinta & rasa syukur,</p>
+            <p class="closing-sign-names">Niar & Reski</p>
+          </div>
+        </div>
+
+        <!-- Section 12: Cameo Medallion, Lace Trim & Creator Credit -->
+        <div class="sheet-section cameo-footer-section">
+          <div class="cameo-brooch-wrapper">
+            <img src="assets/cameo_brooch.png" alt="Vintage Cameo" class="cameo-brooch-img">
+          </div>
+          <div class="sheet-lace-footer"></div>
+          <div class="creator-credit">create by ainulmtqn</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Floating Action Stack (Audio Toggle & Auto-Scroll Controller) -->
+    <div class="floating-action-stack" id="floatingActionStack" aria-label="Aksi Melayang">
+      <!-- Circular Audio Toggle Button -->
+      <button class="floating-btn floating-audio-btn" id="btnFloatingAudio" aria-label="Toggle Musik" title="Musik">
+        <!-- Playing State (Speaker with Sound Waves) -->
+        <svg class="floating-icon audio-icon-playing" id="audioIconPlaying" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+          <path d="M15.5 8.5a5 5 0 0 1 0 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M18.5 5.5a9.5 9.5 0 0 1 0 13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <!-- Paused / Muted State -->
+        <svg class="floating-icon audio-icon-paused" id="audioIconPaused" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+          <path d="M11 5L6 9H2v6h4l5 4V5z" fill="currentColor"/>
+          <line x1="23" y1="9" x2="17" y2="15"></line>
+          <line x1="17" y1="9" x2="23" y2="15"></line>
+        </svg>
+      </button>
+
+      <!-- Pill Auto-Scroll Button -->
+      <button class="floating-btn floating-auto-scroll-btn" id="btnAutoScroll" aria-label="Gulir Otomatis" title="Gulir Otomatis">
+        <!-- Circular Cycle Arrows -->
+        <svg class="floating-icon cycle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 2v6h-6"></path>
+          <path d="M3 12a9 9 0 0 1 15-6.7L21 8"></path>
+          <path d="M3 22v-6h6"></path>
+          <path d="M21 12a9 9 0 0 1-15 6.7L3 16"></path>
+        </svg>
+        <!-- Label: Auto -->
+        <span class="auto-text">Auto</span>
+        <!-- Down Chevron -->
+        <svg class="floating-icon chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </button>
+    </div>
+
+  </div>
+
+  <!-- Background Audio (User's Custom Soundtrack) -->
+  <audio id="bgMusicAudio" src="music.mp3" preload="auto" loop autoplay playsinline webkit-playsinline></audio>
+
+  <!-- Main Cinematic Orchestrator -->
+  <script src="script.js"></script>
+</body>
+</html>

@@ -378,7 +378,7 @@ function initApp() {
   updateCountdown();
   setInterval(updateCountdown, 1000);
 
-  // Dynamic RSVP & Wishes Controller (Vintage Luxury Form)
+  // Dynamic Wishes Controller with LocalStorage Persistence
   const rsvpForm = document.getElementById('rsvpForm');
   const rsvpNameInput = document.getElementById('rsvpName');
   const rsvpWishInput = document.getElementById('rsvpWish');
@@ -386,10 +386,56 @@ function initApp() {
   const rsvpStatusAlert = document.getElementById('rsvpStatusAlert');
   const wishesList = document.getElementById('wishesList');
 
+  const STORAGE_KEY_WISHES = 'wedding_wishes_niar_reski';
+  const DEFAULT_WISHES = [
+    {
+      name: "Keluarga Besar Rahmat",
+      text: "Selamat berbahagia untuk Niar & Reski! Semoga menjadi keluarga yang sakinah, mawaddah, warahmah."
+    },
+    {
+      name: "Sahabat Teknik",
+      text: "Barakallahu lakum wa baraka alaikum wa jama'a bainakuma fi khair. Lancar sampai hari H!"
+    }
+  ];
+
+  function getStoredWishes() {
+    try {
+      const data = localStorage.getItem(STORAGE_KEY_WISHES);
+      return data ? JSON.parse(data) : [];
+    } catch (err) {
+      return [];
+    }
+  }
+
+  function saveWish(name, text) {
+    try {
+      const current = getStoredWishes();
+      current.unshift({ name, text, date: new Date().toLocaleDateString('id-ID') });
+      localStorage.setItem(STORAGE_KEY_WISHES, JSON.stringify(current));
+    } catch (err) {}
+  }
+
+  function renderWishesList() {
+    if (!wishesList) return;
+    const userWishes = getStoredWishes();
+    const allWishes = [...userWishes, ...DEFAULT_WISHES];
+
+    wishesList.innerHTML = '';
+    allWishes.forEach(item => {
+      const el = document.createElement('div');
+      el.className = 'wish-item-vintage';
+      el.innerHTML = `<strong>${escapeHtml(item.name)}</strong><p>${escapeHtml(item.text)}</p>`;
+      wishesList.appendChild(el);
+    });
+  }
+
   // Pre-fill name if guest query exists (?to= or ?u=)
   if (guestQuery && rsvpNameInput) {
     rsvpNameInput.value = decodeURIComponent(guestQuery);
   }
+
+  // Render wishes list immediately on load (including any saved from previous sessions)
+  renderWishesList();
 
   function handleRsvpSubmit(e) {
     if (e) e.preventDefault();
@@ -408,22 +454,28 @@ function initApp() {
       return;
     }
 
-    if (wishesList) {
-      const item = document.createElement('div');
-      item.className = 'wish-item-vintage';
-      item.innerHTML = `<strong>${escapeHtml(name)}</strong><p>${escapeHtml(wish)}</p>`;
-      wishesList.prepend(item);
-    }
+    // Save permanently to localStorage so reload NEVER loses it
+    saveWish(name, wish);
+
+    // Re-render wishes list with the new wish on top
+    renderWishesList();
 
     if (rsvpStatusAlert) {
       rsvpStatusAlert.style.display = 'block';
-      rsvpStatusAlert.innerHTML = `✨ <strong>Terima kasih, ${escapeHtml(name)}!</strong><br>Doa dan ucapan manis Anda telah tersampaikan untuk Niar &amp; Reski.`;
+      rsvpStatusAlert.innerHTML = `✨ <strong>Terima kasih, ${escapeHtml(name)}!</strong><br>Doa dan ucapan manis Anda telah tersimpan dan tersampaikan untuk Niar &amp; Reski.`;
     }
 
     if (btnSubmitRsvp) {
       btnSubmitRsvp.textContent = '✓ Ucapan Terkirim';
       btnSubmitRsvp.style.opacity = '0.85';
       btnSubmitRsvp.disabled = true;
+
+      // Allow sending another wish after 3 seconds
+      setTimeout(() => {
+        btnSubmitRsvp.disabled = false;
+        btnSubmitRsvp.style.opacity = '1';
+        btnSubmitRsvp.textContent = 'Kirim Ucapan Lainnya 💌';
+      }, 3000);
     }
     if (rsvpWishInput) rsvpWishInput.value = '';
   }

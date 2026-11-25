@@ -443,10 +443,10 @@ body {
 .cover-couple-container {
   position: absolute;
   left: 50%;
-  top: clamp(230px, 29vh, 265px);
-  bottom: clamp(110px, 15vh, 140px);
+  bottom: clamp(115px, 15vh, 145px);
   transform: translateX(-50%) translateY(24px) scale(0.96);
-  height: auto;
+  height: clamp(310px, 42vh, 410px);
+  max-height: calc(100vh - 250px);
   width: auto;
   max-width: 90vw;
   z-index: 14;
@@ -454,8 +454,6 @@ body {
   filter: blur(8px) drop-shadow(0 10px 24px rgba(35, 20, 15, 0.15));
   opacity: 0;
   visibility: hidden;
-  -webkit-mask-image: linear-gradient(to bottom, #000 82%, transparent 98%);
-  mask-image: linear-gradient(to bottom, #000 82%, transparent 98%);
   transition: opacity 1.3s cubic-bezier(0.16, 1, 0.3, 1),
               transform 1.3s cubic-bezier(0.16, 1, 0.3, 1),
               filter 1.2s cubic-bezier(0.16, 1, 0.3, 1);
@@ -475,7 +473,7 @@ body {
   width: auto;
   max-width: 100%;
   object-fit: contain;
-  object-position: top center;
+  object-position: bottom center;
   display: block;
 }
 

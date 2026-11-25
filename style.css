@@ -919,108 +919,7 @@ body {
   margin-top: 4px;
 }
 
-.card-corner-botanical {
-  position: absolute;
-  right: 8px;
-  bottom: 8px;
-  width: 36px;
-  opacity: 0.85;
-  pointer-events: none;
-}
-
-.corner-flower-img {
-  width: 100%;
-  height: auto;
-}
-
-/* Section 3: Timeline with Vintage Pocket Watch */
-.timeline-section {
-  padding: 4px 0;
-}
-
-.timeline-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 12px 14px;
-  max-width: 380px;
-  margin: 0 auto;
-  background: #ffffff;
-  border-radius: 12px;
-  border: 1px solid rgba(212, 175, 55, 0.35);
-  box-shadow: 0 8px 24px rgba(60, 45, 35, 0.06);
-}
-
-.timeline-tree {
-  flex: 1;
-  border-left: 2px dashed #c59b27;
-  margin-left: 8px;
-  padding-left: 16px;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.timeline-node {
-  position: relative;
-}
-
-.timeline-node::before {
-  content: '';
-  position: absolute;
-  left: -22px;
-  top: 3px;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #d4af37;
-  border: 2px solid #ffffff;
-  box-shadow: 0 0 5px rgba(212, 175, 55, 0.5);
-}
-
-.timeline-node-time {
-  font-family: var(--font-sans);
-  font-size: 11px;
-  font-weight: 700;
-  color: #8c5539;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.timeline-node-title {
-  font-family: var(--font-serif);
-  font-size: 16px;
-  font-weight: 700;
-  color: #241712;
-  margin-top: 1px;
-}
-
-.timeline-node-desc {
-  font-family: var(--font-serif);
-  font-size: 12.5px;
-  color: #6a5347;
-  margin-top: 2px;
-}
-
-.timeline-watch-wrapper {
-  width: 64px;
-  flex-shrink: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 4px;
-}
-
-.vintage-watch-img {
-  width: 56px;
-  height: auto;
-  border-radius: 50%;
-  filter: drop-shadow(0 6px 14px rgba(60, 45, 35, 0.2));
-}
-
-/* Section 4: Venue & Location on Antique Tray */
+/* Section 3: Venue & Location on Antique Tray */
 .antique-tray-container {
   background: #ffffff;
   border: 1.5px solid rgba(212, 175, 55, 0.45);
@@ -1084,187 +983,103 @@ body {
   height: 14px;
 }
 
-.tray-botanical-accent {
-  position: absolute;
-  right: 10px;
-  bottom: 8px;
-  width: 34px;
-  pointer-events: none;
-  opacity: 0.85;
+/* Section 4: Countdown Timer ("Menuju Hari Bahagia") */
+.countdown-vintage-section {
+  padding: 10px 0;
 }
 
-.tray-flower-img {
-  width: 100%;
-  height: auto;
-}
-
-/* Section 5: Dress Code & 5 Oval Swatches */
-.dresscode-subtitle {
-  font-family: var(--font-serif);
-  font-size: 13.5px;
-  font-weight: 600;
-  color: #a86c4e;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-top: -6px;
-  margin-bottom: 10px;
-}
-
-.dresscode-notice {
-  font-family: var(--font-serif);
-  font-size: 13.5px;
-  color: #523f35;
-  line-height: 1.5;
-  margin-bottom: 16px;
-  max-width: 360px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.palette-swatches-grid {
+.countdown-clock-row {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  margin: 16px 0;
-}
-
-.swatch-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 5px;
-}
-
-.swatch-oval {
-  width: 38px;
-  height: 54px;
-  border-radius: 50%;
-  border: 2px solid #d4af37;
-  box-shadow: 0 4px 12px rgba(60, 45, 35, 0.15), inset 0 0 0 1.5px rgba(255, 245, 220, 0.7);
-  transition: transform 0.25s ease;
-  cursor: pointer;
-}
-
-.swatch-oval:hover {
-  transform: scale(1.1);
-}
-
-.swatch-label {
-  font-family: var(--font-sans);
-  font-size: 10.5px;
-  font-weight: 600;
-  color: #5c473c;
-  letter-spacing: 0.04em;
-}
-
-.dresscode-foot-note {
-  font-family: var(--font-serif);
-  font-size: 12px;
-  color: #8c5d45;
-  font-style: italic;
+  align-items: baseline;
+  gap: 8px;
   margin-top: 10px;
 }
 
-/* Section 6: Outfit Inspiration Photo Frame */
-.inspiration-photo-frame {
+.clock-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 54px;
   background: #ffffff;
-  padding: 6px;
-  border: 1px solid rgba(212, 175, 55, 0.4);
+  padding: 10px 8px;
   border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 8px 25px rgba(60, 45, 35, 0.08);
-  margin: 10px 4px;
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  box-shadow: 0 4px 12px rgba(60, 45, 35, 0.06);
 }
 
-.inspiration-img {
+.clock-number {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 700;
+  color: #241712;
+}
+
+.clock-label {
+  font-family: var(--font-sans);
+  font-size: 9.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #8c5d45;
+  margin-top: 2px;
+}
+
+.clock-colon {
+  font-size: 20px;
+  font-weight: 700;
+  color: #a86c4e;
+  opacity: 0.8;
+}
+
+/* Section 5: Polaroid 3-Photo Couple Strip */
+.polaroid-strip-card {
+  background: #ffffff;
+  padding: 8px 8px 14px 8px;
+  border-radius: 4px;
+  box-shadow: 0 10px 30px rgba(60, 45, 35, 0.15);
+  max-width: 210px;
+  margin: 0 auto;
+  transform: rotate(-1deg);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.polaroid-strip-img {
   width: 100%;
   height: auto;
   display: block;
 }
 
-/* Section 8: Information & Questions Envelope */
-.contact-envelope-section {
-  padding: 4px 0;
+.closing-love-message {
+  margin-top: 16px;
 }
 
-.envelope-card-container {
-  background: linear-gradient(135deg, #a37554 0%, #7e553c 100%);
-  border: 1.5px solid #8c5e42;
-  border-radius: 10px;
-  padding: 16px 12px;
-  box-shadow: 0 10px 25px rgba(60, 45, 35, 0.15);
-  margin: 10px 4px;
-}
-
-.envelope-inner-card {
-  background: #ffffff;
-  color: #3b2820;
-  border-radius: 6px;
-  padding: 18px 14px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-  text-align: center;
-}
-
-.envelope-script-title {
-  font-family: 'Alex Brush', cursive;
-  font-size: 26px;
+.closing-title {
+  font-family: var(--font-serif);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
   color: #8c3f49;
-  margin: 0 0 6px 0;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.closing-sign-lead {
+  font-family: var(--font-serif);
+  font-size: 13px;
+  color: #635046;
+  font-style: italic;
+  margin-bottom: 2px;
+}
+
+.closing-sign-names {
+  font-family: 'Alex Brush', cursive;
+  font-size: 34px;
+  color: #241712;
   font-weight: 400;
 }
 
-.envelope-desc {
-  font-family: var(--font-serif);
-  font-size: 13px;
-  color: #5c473c;
-  line-height: 1.45;
-  margin-bottom: 10px;
-}
-
-.organizer-badge {
-  display: inline-block;
-  font-family: var(--font-sans);
-  font-size: 11px;
-  font-weight: 700;
-  color: #483227;
-  background: #f4ece2;
-  border: 1px solid rgba(168, 108, 78, 0.3);
-  padding: 4px 14px;
-  border-radius: 14px;
-  margin-bottom: 12px;
-}
-
-.contact-action-row {
-  display: flex;
-  justify-content: center;
-  gap: 14px;
-}
-
-.btn-contact-icon {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  border: 1.2px solid #a86c4e;
-  background: #faf7f2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #483227;
-  transition: transform 0.2s, background 0.2s;
-  text-decoration: none;
-}
-
-.btn-contact-icon:hover {
-  transform: scale(1.1);
-  background: #f2e6d6;
-}
-
-.btn-contact-icon svg {
-  width: 17px;
-  height: 17px;
-}
-
-/* Section 9: RSVP Form */
+/* Section 6: Form Ucapan */
 .rsvp-intro {
   font-family: var(--font-serif);
   font-size: 13.5px;
@@ -1299,7 +1114,7 @@ body {
   margin-bottom: 5px;
 }
 
-.form-input-vintage, .form-select-vintage, .form-textarea-vintage {
+.form-input-vintage, .form-textarea-vintage {
   width: 100%;
   background: #faf7f2;
   border: 1.2px solid #ddd1c3;
@@ -1312,31 +1127,9 @@ body {
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-.form-input-vintage:focus, .form-select-vintage:focus, .form-textarea-vintage:focus {
+.form-input-vintage:focus, .form-textarea-vintage:focus {
   border-color: #a86c4e;
   box-shadow: 0 0 8px rgba(168, 108, 78, 0.25);
-}
-
-.radio-options-row {
-  display: flex;
-  gap: 16px;
-  align-items: center;
-  margin-top: 4px;
-}
-
-.radio-custom {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--font-serif);
-  font-size: 13px;
-  color: #4a372e;
-  cursor: pointer;
-}
-
-.radio-custom input[type="radio"] {
-  accent-color: #a86c4e;
-  cursor: pointer;
 }
 
 .btn-submit-vintage {
@@ -1405,132 +1198,10 @@ body {
   margin: 0;
 }
 
-/* Section 10: Countdown Timer with Vintage Key */
-.countdown-vintage-section {
-  padding: 10px 0;
-}
-
-.countdown-decor-top {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 4px;
-}
-
-.countdown-key-img {
-  width: 22px;
-  height: auto;
-  filter: drop-shadow(0 4px 8px rgba(60, 45, 35, 0.25));
-}
-
-.countdown-clock-row {
-  display: flex;
-  justify-content: center;
-  align-items: baseline;
-  gap: 8px;
-  margin-top: 10px;
-}
-
-.clock-unit {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-width: 54px;
-  background: #ffffff;
-  padding: 10px 8px;
-  border-radius: 10px;
-  border: 1px solid rgba(212, 175, 55, 0.35);
-  box-shadow: 0 4px 12px rgba(60, 45, 35, 0.06);
-}
-
-.clock-number {
-  font-family: var(--font-display);
-  font-size: 24px;
-  font-weight: 700;
-  color: #241712;
-}
-
-.clock-label {
-  font-family: var(--font-sans);
-  font-size: 9.5px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: #8c5d45;
-  margin-top: 2px;
-}
-
-.clock-colon {
-  font-size: 20px;
-  font-weight: 700;
-  color: #a86c4e;
-  opacity: 0.8;
-}
-
-/* Section 11: Polaroid 3-Photo Couple Strip */
-.polaroid-strip-card {
-  background: #ffffff;
-  padding: 8px 8px 14px 8px;
-  border-radius: 4px;
-  box-shadow: 0 10px 30px rgba(60, 45, 35, 0.15);
-  max-width: 210px;
-  margin: 0 auto;
-  transform: rotate(-1deg);
-  border: 1px solid rgba(0, 0, 0, 0.04);
-}
-
-.polaroid-strip-img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.closing-love-message {
-  margin-top: 16px;
-}
-
-.closing-title {
-  font-family: var(--font-serif);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  color: #8c3f49;
-  text-transform: uppercase;
-  margin-bottom: 4px;
-}
-
-.closing-sign-lead {
-  font-family: var(--font-serif);
-  font-size: 13px;
-  color: #635046;
-  font-style: italic;
-  margin-bottom: 2px;
-}
-
-.closing-sign-names {
-  font-family: 'Alex Brush', cursive;
-  font-size: 34px;
-  color: #241712;
-  font-weight: 400;
-}
-
-/* Section 12: Cameo Medallion & Footer Credits */
+/* Section 7: Footer Lace & Creator Credit */
 .cameo-footer-section {
   margin-top: 10px;
   margin-bottom: 10px;
-}
-
-.cameo-brooch-wrapper {
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
-}
-
-.cameo-brooch-img {
-  width: 38px;
-  height: auto;
-  border-radius: 50%;
-  border: 1.5px solid #d4af37;
-  box-shadow: 0 4px 12px rgba(60, 45, 35, 0.2);
 }
 
 .creator-credit {

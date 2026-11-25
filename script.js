@@ -112,6 +112,8 @@ function initApp() {
     showAllNameChars();
     coverCard.classList.remove('card-revealed');
     if (coverCreator) coverCreator.classList.remove('card-revealed');
+    const coverCouple = document.getElementById('coverCoupleContainer');
+    if (coverCouple) coverCouple.classList.remove('couple-revealed');
   }
 
   /**
@@ -127,9 +129,11 @@ function initApp() {
     playMusic();
     setBadgeText("The Wedding of Niar & Reski");
 
-    // Langkah 1: Pendaran Cahaya Lembut & Mekarkan Monogram/Nama (280ms)
+    // Langkah 1: Pendaran Cahaya Lembut & Mekarkan Monogram/Nama serta Foto 1 (280ms)
     const t1 = setTimeout(() => {
       monogramContainer.classList.add('bloom-revealed');
+      const coverCouple = document.getElementById('coverCoupleContainer');
+      if (coverCouple) coverCouple.classList.add('couple-revealed');
     }, 280);
     animationTimeouts.push(t1);
 
@@ -147,6 +151,8 @@ function initApp() {
     showAllNameChars();
     coverCard.classList.add('card-revealed');
     if (coverCreator) coverCreator.classList.add('card-revealed');
+    const coverCouple = document.getElementById('coverCoupleContainer');
+    if (coverCouple) coverCouple.classList.add('couple-revealed');
     playMusic();
   }
   function goToPhase1() { startSequence(); }

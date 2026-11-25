@@ -16,6 +16,7 @@ Website undangan pernikahan digital bernuansa vintage Victorian & botanical gard
 - `sampul.jpg`: Gambar latar belakang sampul.
 - `music.mp3`: Musik latar pernikahan.
 - `assets/`: Aset gambar & ornamen:
+  - `foto1.png`: Foto / ilustrasi mempelai berbusana adat di halaman depan (sampul).
   - `foto_pengantin.jpg`: Foto utama kedua mempelai dalam bingkai Barok oval emas.
   - `foto_gallery_main.jpg`: Foto kenangan utama (backdrop kolase).
   - `foto_gallery_1.jpg`: Foto polaroid kiri (tilted -8°).
@@ -26,9 +27,11 @@ Website undangan pernikahan digital bernuansa vintage Victorian & botanical gard
 
 ## 📸 Cara Menambahkan / Mengganti Foto Asli
 Anda dapat langsung mengganti file foto di dalam folder `assets/`:
-1. **Foto Utama Mempelai (Bingkai Oval Barok)**:
+1. **Foto Mempelai Halaman Depan (Sampul)**:
+   Ganti file `assets/foto1.png` (atau `Foto1.png`) dengan foto / ilustrasi mempelai yang diinginkan (disarankan berlatar transparan).
+2. **Foto Utama Mempelai di Lembaran Undangan (Bingkai Oval Barok)**:
    Ganti file `assets/foto_pengantin.jpg` dengan foto potret Anda.
-2. **Kolase Foto Kenangan (Backdrop & 3 Polaroid Overlapping)**:
+3. **Kolase Foto Kenangan (Backdrop & 3 Polaroid Overlapping)**:
    Ganti 4 file foto berikut:
    - `assets/foto_gallery_main.jpg` (foto landscape utama di belakang)
    - `assets/foto_gallery_1.jpg` (polaroid kiri)

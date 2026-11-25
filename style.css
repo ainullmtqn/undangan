@@ -438,6 +438,42 @@ body {
 }
 
 /* ========================================================
+   COVER COUPLE ILLUSTRATION (Foto 1 - Niar & Reski Bugis 3D Art)
+   ======================================================== */
+.cover-couple-container {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(170px, 20vh, 200px);
+  transform: translateX(-50%) translateY(18px) scale(0.96);
+  height: clamp(280px, 38vh, 360px);
+  width: auto;
+  z-index: 14;
+  pointer-events: none;
+  filter: drop-shadow(0 10px 24px rgba(35, 20, 15, 0.28));
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.35s,
+              transform 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.35s;
+  will-change: opacity, transform;
+}
+
+.cover-couple-container.couple-revealed,
+.bloom-revealed ~ .cover-couple-container,
+.state-cover-final .cover-couple-container {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0) scale(1.0);
+}
+
+.cover-couple-img {
+  height: 100%;
+  width: auto;
+  max-width: 90vw;
+  object-fit: contain;
+  display: block;
+}
+
+/* ========================================================
    INVITATION COVER CARD & BUTTON (GUEST GREETING)
    ======================================================== */
 

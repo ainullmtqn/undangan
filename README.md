@@ -17,21 +17,23 @@ Website undangan pernikahan digital bernuansa vintage Victorian & botanical gard
 - `music.mp3`: Musik latar pernikahan.
 - `assets/`: Aset gambar & ornamen:
   - `foto_pengantin.jpg`: Foto utama kedua mempelai dalam bingkai Barok oval emas.
-  - `foto_gallery_1.jpg`: Foto kenangan polaroid 1.
-  - `foto_gallery_2.jpg`: Foto kenangan polaroid 2.
-  - `foto_gallery_3.jpg`: Foto kenangan polaroid 3.
+  - `foto_gallery_main.jpg`: Foto kenangan utama (backdrop kolase).
+  - `foto_gallery_1.jpg`: Foto polaroid kiri (tilted -8°).
+  - `foto_gallery_2.jpg`: Foto polaroid tengah (straight front).
+  - `foto_gallery_3.jpg`: Foto polaroid kanan (tilted +8°).
   - `cameo_brooch.png`: Pin medali emas N & R.
   - `lace_border.svg`: Ornamen renda Victorian.
 
 ## 📸 Cara Menambahkan / Mengganti Foto Asli
 Anda dapat langsung mengganti file foto di dalam folder `assets/`:
 1. **Foto Utama Mempelai (Bingkai Oval Barok)**:
-   Ganti file `assets/foto_pengantin.jpg` dengan foto Anda.
-2. **Foto Kenangan (Strip Polaroid)**:
-   Ganti 3 file foto berikut:
-   - `assets/foto_gallery_1.jpg`
-   - `assets/foto_gallery_2.jpg`
-   - `assets/foto_gallery_3.jpg`
+   Ganti file `assets/foto_pengantin.jpg` dengan foto potret Anda.
+2. **Kolase Foto Kenangan (Backdrop & 3 Polaroid Overlapping)**:
+   Ganti 4 file foto berikut:
+   - `assets/foto_gallery_main.jpg` (foto landscape utama di belakang)
+   - `assets/foto_gallery_1.jpg` (polaroid kiri)
+   - `assets/foto_gallery_2.jpg` (polaroid tengah)
+   - `assets/foto_gallery_3.jpg` (polaroid kanan)
 
 *Catatan: Sistem secara otomatis menyesuaikan aspek rasio (`object-fit: cover`) sehingga foto tidak akan gepeng atau terdistorsi.*
 

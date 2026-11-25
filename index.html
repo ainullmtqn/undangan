@@ -187,50 +187,26 @@
         <!-- Decorative Lace Band -->
         <div class="lace-band-separator"></div>
 
-        <!-- Section 4: Guest Attendance Form / RSVP -->
+        <!-- Section 4: Wishes & Guestbook Form ("Form Ucapan") -->
         <div class="sheet-section rsvp-section">
-          <h2 class="section-script-title">Konfirmasi Kehadiran</h2>
+          <h2 class="section-script-title">Form Ucapan</h2>
           <p class="rsvp-intro">
-            Mohon kesediaan Bapak/Ibu/Saudara/i untuk mengonfirmasi kehadiran demi kelancaran persiapan jamuan:
+            Berikan doa restu dan ucapan terbaik Anda untuk Niar &amp; Reski:
           </p>
 
           <form class="vintage-rsvp-form" id="rsvpForm" onsubmit="return false;">
             <div class="form-group">
-              <label for="rsvpName" class="form-label">1. Nama Lengkap</label>
-              <input type="text" id="rsvpName" class="form-input-vintage" placeholder="Nama Anda / Tamu Undangan" required>
+              <label for="rsvpName" class="form-label">Nama Lengkap</label>
+              <input type="text" id="rsvpName" class="form-input-vintage" placeholder="Nama Anda / Keluarga" required>
             </div>
 
             <div class="form-group">
-              <label class="form-label">2. Konfirmasi Kehadiran</label>
-              <div class="radio-options-row">
-                <label class="radio-custom">
-                  <input type="radio" name="attendance" value="Hadir" checked>
-                  <span class="radio-dot"></span>
-                  <span class="radio-text">Ya, Saya Hadir</span>
-                </label>
-                <label class="radio-custom">
-                  <input type="radio" name="attendance" value="Tidak Hadir">
-                  <span class="radio-dot"></span>
-                  <span class="radio-text">Maaf, Belum Bisa Hadir</span>
-                </label>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="guestCount" class="form-label">3. Jumlah Tamu</label>
-              <select id="guestCount" class="form-select-vintage">
-                <option value="1">1 Orang</option>
-                <option value="2">2 Orang</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label for="rsvpWish" class="form-label">4. Doa & Pesan Ucapan</label>
-              <textarea id="rsvpWish" class="form-textarea-vintage" rows="3" placeholder="Tuliskan doa & ucapan untuk Niar & Reski..."></textarea>
+              <label for="rsvpWish" class="form-label">Doa &amp; Pesan Ucapan</label>
+              <textarea id="rsvpWish" class="form-textarea-vintage" rows="4" placeholder="Tuliskan doa restu &amp; ucapan manis untuk kedua mempelai..." required></textarea>
             </div>
 
             <button type="submit" class="btn-submit-vintage" id="btnSubmitRsvp">
-              Kirim Konfirmasi Kehadiran 💌
+              Kirim Ucapan 💌
             </button>
             <div class="rsvp-status-alert" id="rsvpStatusAlert" style="display:none;"></div>
           </form>

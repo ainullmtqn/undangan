@@ -396,34 +396,36 @@ function initApp() {
     if (!rsvpNameInput) return;
     const name = rsvpNameInput.value.trim();
     const wish = rsvpWishInput ? rsvpWishInput.value.trim() : '';
-    const attendanceEl = document.querySelector('input[name="attendance"]:checked');
-    const attendance = attendanceEl ? attendanceEl.value : 'Hadir';
-    const guestCountEl = document.getElementById('guestCount');
-    const guestCount = guestCountEl ? guestCountEl.value : '1';
 
     if (!name) {
       alert('Mohon isi nama lengkap Anda terlebih dahulu.');
       rsvpNameInput.focus();
       return;
     }
+    if (!wish) {
+      alert('Mohon tuliskan doa atau ucapan Anda.');
+      if (rsvpWishInput) rsvpWishInput.focus();
+      return;
+    }
 
-    if (wish && wishesList) {
+    if (wishesList) {
       const item = document.createElement('div');
       item.className = 'wish-item-vintage';
-      item.innerHTML = `<strong>${escapeHtml(name)} <span style="font-size:10.5px; opacity:0.8; font-weight:normal;">(${escapeHtml(attendance)} • ${escapeHtml(guestCount)} orang)</span></strong><p>${escapeHtml(wish)}</p>`;
+      item.innerHTML = `<strong>${escapeHtml(name)}</strong><p>${escapeHtml(wish)}</p>`;
       wishesList.prepend(item);
     }
 
     if (rsvpStatusAlert) {
       rsvpStatusAlert.style.display = 'block';
-      rsvpStatusAlert.innerHTML = `✨ <strong>Terima kasih, ${escapeHtml(name)}!</strong><br>Konfirmasi kehadiran Anda (${escapeHtml(attendance)}) telah tersimpan.`;
+      rsvpStatusAlert.innerHTML = `✨ <strong>Terima kasih, ${escapeHtml(name)}!</strong><br>Doa dan ucapan manis Anda telah tersampaikan untuk Niar &amp; Reski.`;
     }
 
     if (btnSubmitRsvp) {
-      btnSubmitRsvp.textContent = '✓ Konfirmasi Terkirim';
+      btnSubmitRsvp.textContent = '✓ Ucapan Terkirim';
       btnSubmitRsvp.style.opacity = '0.85';
       btnSubmitRsvp.disabled = true;
     }
+    if (rsvpWishInput) rsvpWishInput.value = '';
   }
 
   if (rsvpForm) {

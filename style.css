@@ -861,12 +861,12 @@ body {
 
 .card-pearl-pin {
   position: absolute;
-  top: -14px;
+  top: -18px;
   left: 50%;
   transform: translateX(-50%);
-  width: 28px;
-  height: 28px;
-  filter: drop-shadow(0 4px 6px rgba(60, 45, 35, 0.3));
+  width: 32px;
+  height: 40px;
+  filter: drop-shadow(0 4px 8px rgba(60, 45, 35, 0.35));
   z-index: 5;
 }
 

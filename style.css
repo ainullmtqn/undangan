@@ -1117,8 +1117,10 @@ body {
   object-fit: cover;
   object-position: center 25%;
   display: block;
-  -webkit-mask-image: radial-gradient(ellipse 94% 90% at 50% 50%, #000 58%, rgba(0, 0, 0, 0.75) 75%, transparent 100%);
-  mask-image: radial-gradient(ellipse 94% 90% at 50% 50%, #000 58%, rgba(0, 0, 0, 0.75) 75%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 8%, #000 92%, transparent), linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to bottom, transparent, #000 8%, #000 92%, transparent), linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  mask-composite: intersect;
 }
 
 /* Floating blossom petals decoration */

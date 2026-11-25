@@ -440,6 +440,20 @@ body {
 /* ========================================================
    COVER COUPLE ILLUSTRATION (Foto 1 - Niar & Reski Bugis 3D Art)
    ======================================================== */
+@keyframes coverCoupleRevealAnim {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px) scale(0.96);
+    filter: blur(4px) drop-shadow(0 10px 24px rgba(35, 20, 15, 0.28));
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0) scale(1.0);
+    filter: blur(0) drop-shadow(0 10px 24px rgba(35, 20, 15, 0.28));
+  }
+}
+
 .cover-couple-container {
   position: absolute;
   left: 50%;
@@ -455,15 +469,17 @@ body {
   transition: opacity 1.0s cubic-bezier(0.16, 1, 0.3, 1),
               transform 1.0s cubic-bezier(0.16, 1, 0.3, 1),
               filter 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: coverCoupleRevealAnim 1.0s cubic-bezier(0.16, 1, 0.3, 1) 0.85s both;
   will-change: opacity, transform, filter;
 }
 
 .cover-couple-container.couple-revealed,
+.bloom-revealed ~ .cover-couple-container,
 .state-cover-final .cover-couple-container {
-  opacity: 1;
-  visibility: visible;
-  transform: translateX(-50%) translateY(0) scale(1.0);
-  filter: blur(0) drop-shadow(0 10px 24px rgba(35, 20, 15, 0.28));
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateX(-50%) translateY(0) scale(1.0) !important;
+  filter: blur(0) drop-shadow(0 10px 24px rgba(35, 20, 15, 0.28)) !important;
 }
 
 .cover-couple-img {
@@ -478,6 +494,22 @@ body {
    INVITATION COVER CARD & BUTTON (GUEST GREETING)
    ======================================================== */
 
+@keyframes coverCardRevealAnim {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+    filter: blur(4px);
+    pointer-events: none;
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    filter: blur(0);
+    pointer-events: auto;
+  }
+}
+
 .invitation-cover-card {
   position: absolute;
   bottom: 74px;
@@ -491,16 +523,18 @@ body {
   transition: opacity 1.0s cubic-bezier(0.16, 1, 0.3, 1),
               transform 1.0s cubic-bezier(0.16, 1, 0.3, 1),
               filter 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: coverCardRevealAnim 1.0s cubic-bezier(0.16, 1, 0.3, 1) 0.85s both;
   visibility: hidden;
   will-change: opacity, transform, filter;
 }
 
-.invitation-cover-card.card-revealed {
-  opacity: 1;
-  transform: translateY(0);
-  filter: blur(0);
-  visibility: visible;
-  pointer-events: auto;
+.invitation-cover-card.card-revealed,
+.state-cover-final .invitation-cover-card {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  filter: blur(0) !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
 }
 
 .card-inner {

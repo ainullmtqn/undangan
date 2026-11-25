@@ -805,6 +805,7 @@ body {
 /* Section 1: Couple Hero with Baroque Frame */
 .couple-hero-section {
   margin-top: 6px;
+  position: relative;
 }
 
 .hero-calligraphy-sub {
@@ -813,28 +814,34 @@ body {
   color: #a86c4e;
   letter-spacing: 0.04em;
   margin-bottom: -4px;
+  position: relative;
+  z-index: 3;
+  text-shadow: 0 1px 8px rgba(250, 247, 242, 0.95);
 }
 
 .hero-calligraphy-names {
   font-family: 'Alex Brush', cursive;
   font-size: 46px;
   color: #241712;
-  margin: -4px 0 12px 0;
+  margin: -4px 0 0 0;
   font-weight: 400;
   line-height: 1.1;
-  text-shadow: 0 2px 8px rgba(168, 108, 78, 0.2);
+  text-shadow: 0 2px 10px rgba(250, 247, 242, 0.95), 0 0 15px rgba(255, 255, 255, 0.9);
+  position: relative;
+  z-index: 3;
 }
 
-/* Section 1: Couple Hero Full-Width Banner with Soft Feathered Top & Bottom */
+/* Section 1: Couple Hero Full-Width Banner with Soft Feathered Top & Bottom Overlapping Text */
 .couple-hero-banner {
   position: relative;
   width: calc(100% + 36px);
   margin-left: -18px;
   margin-right: -18px;
-  margin-top: 10px;
-  margin-bottom: 22px;
-  height: clamp(340px, 44vh, 410px);
+  margin-top: -65px;
+  margin-bottom: -55px;
+  height: clamp(380px, 48vh, 460px);
   overflow: hidden;
+  z-index: 1;
   pointer-events: none;
 }
 
@@ -844,15 +851,17 @@ body {
   object-fit: cover;
   object-position: center 25%;
   display: block;
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 18%, #000 82%, transparent 100%);
-  mask-image: linear-gradient(to bottom, transparent 0%, #000 18%, #000 82%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 78%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 78%, transparent 100%);
 }
 
 .parents-honor-box {
+  position: relative;
+  z-index: 3;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin-top: 8px;
+  margin-top: 0;
 }
 
 .honor-card {
@@ -867,7 +876,7 @@ body {
   letter-spacing: 0.015em;
   line-height: 1.2;
   margin-bottom: 6px;
-  text-shadow: 0 1px 4px rgba(255, 255, 255, 0.85);
+  text-shadow: 0 1px 8px rgba(250, 247, 242, 0.95), 0 0 12px rgba(255, 255, 255, 0.9);
 }
 
 .honor-parents {
@@ -876,6 +885,7 @@ body {
   color: #635046;
   line-height: 1.45;
   margin: 0;
+  text-shadow: 0 1px 6px rgba(255, 255, 255, 0.95);
 }
 
 .honor-ampersand {

@@ -443,9 +443,9 @@ body {
 .cover-couple-container {
   position: absolute;
   left: 50%;
-  bottom: clamp(170px, 20vh, 200px);
+  bottom: clamp(100px, 12vh, 125px);
   transform: translateX(-50%) translateY(18px) scale(0.96);
-  height: clamp(280px, 38vh, 360px);
+  height: clamp(260px, 34vh, 320px);
   width: auto;
   z-index: 14;
   pointer-events: none;

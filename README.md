@@ -29,8 +29,8 @@ Website undangan pernikahan digital bernuansa vintage Victorian & botanical gard
 Anda dapat langsung mengganti file foto di dalam folder `assets/`:
 1. **Foto Mempelai Halaman Depan (Sampul)**:
    Ganti file `assets/foto1.png` (atau `Foto1.png`) dengan foto / ilustrasi mempelai yang diinginkan (disarankan berlatar transparan).
-2. **Foto Utama Mempelai di Lembaran Undangan (Bingkai Oval Barok)**:
-   Ganti file `assets/foto_pengantin.jpg` dengan foto potret Anda.
+2. **Foto Utama Mempelai di Lembaran Undangan (Full-Width Soft Blend)**:
+   Ganti file `assets/foto_pengantin.jpg` dengan foto potret/landscape Anda. Foto akan tampil penuh membentang selebar kartu (*full-width*) dengan tepi atas dan bawah yang memudar halus menyatu dengan latar kertas krem.
 3. **Kolase Foto Kenangan (Backdrop & 3 Polaroid Overlapping)**:
    Ganti 4 file foto berikut:
    - `assets/foto_gallery_main.jpg` (foto landscape utama di belakang)

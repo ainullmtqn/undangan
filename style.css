@@ -817,12 +817,13 @@ body {
 }
 
 .honor-name {
-  font-family: var(--font-serif);
-  font-size: 16.5px;
+  font-family: 'Playfair Display', var(--font-serif);
+  font-size: 24px;
   font-weight: 700;
-  color: #2e1e17;
-  letter-spacing: 0.03em;
-  margin-bottom: 2px;
+  color: #24150e;
+  letter-spacing: 0.02em;
+  line-height: 1.25;
+  margin-bottom: 5px;
 }
 
 .honor-parents {

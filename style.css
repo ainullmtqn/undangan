@@ -465,15 +465,6 @@ body {
   visibility: visible;
   pointer-events: auto;
 }
-  will-change: opacity, transform;
-}
-
-.invitation-cover-card.card-revealed {
-  opacity: 1;
-  transform: translateY(0);
-  visibility: visible;
-  pointer-events: auto;
-}
 
 .card-inner {
   position: relative;

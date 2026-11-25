@@ -813,17 +813,18 @@ body {
 }
 
 .honor-card {
-  padding: 4px 0;
+  padding: 6px 0;
 }
 
 .honor-name {
   font-family: 'Playfair Display', var(--font-serif);
-  font-size: 24px;
+  font-size: clamp(28px, 7.5vw, 33px);
   font-weight: 700;
-  color: #24150e;
-  letter-spacing: 0.02em;
-  line-height: 1.25;
-  margin-bottom: 5px;
+  color: #1f110a;
+  letter-spacing: 0.015em;
+  line-height: 1.2;
+  margin-bottom: 6px;
+  text-shadow: 0 1px 4px rgba(255, 255, 255, 0.85);
 }
 
 .honor-parents {
@@ -836,9 +837,9 @@ body {
 
 .honor-ampersand {
   font-family: 'Alex Brush', cursive;
-  font-size: 32px;
+  font-size: 38px;
   color: #a86c4e;
-  margin: -4px 0;
+  margin: -2px 0;
 }
 
 /* Section 2 & 7: Deckle-Edge Parchment Card with Pearl Pin */

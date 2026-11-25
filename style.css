@@ -519,10 +519,12 @@ body {
 }
 
 .guest-greeting {
-  font-size: 10px;
-  color: #6a574e;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font-size: 8.5px;
+  color: #7a665d;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  font-weight: 500;
+  margin-bottom: 2px;
 }
 
 .guest-salutation {

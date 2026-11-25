@@ -654,55 +654,9 @@ body {
   transform: translateY(0%);
 }
 
-.sheet-handle {
-  position: sticky;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 26px;
-  background: rgba(250, 247, 242, 0.95);
-  backdrop-filter: blur(8px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 20;
-  cursor: pointer;
-}
-
-.handle-bar {
-  width: 40px;
-  height: 3.5px;
-  background: #c5b5a7;
-  border-radius: 3px;
-}
-
+.sheet-handle,
 .close-sheet-btn {
-  position: sticky;
-  top: 8px;
-  right: 12px;
-  float: right;
-  z-index: 25;
-  background: #483227;
-  border: 1.2px solid #d4af37;
-  color: #fff8ef;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  font-size: 13px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: -16px;
-  margin-right: 12px;
-  box-shadow: 0 4px 10px rgba(72, 50, 39, 0.25);
-  transition: all 0.2s ease;
-}
-
-.close-sheet-btn:hover {
-  background: #5c3e30;
-  border-color: #ffd700;
-  transform: scale(1.08);
+  display: none !important;
 }
 
 /* Lace Borders & Decorations */
@@ -711,7 +665,7 @@ body {
   background: url('assets/lace_border.svg') repeat-x center top;
   background-size: 320px 22px;
   opacity: 0.85;
-  margin-top: -6px;
+  margin-top: 14px;
 }
 
 .sheet-lace-footer {

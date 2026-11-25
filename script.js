@@ -288,8 +288,8 @@ function initApp() {
     e.preventDefault();
     openInvitation();
   });
-  btnCloseSheet.addEventListener('click', closeInvitation);
-  sheetHandle.addEventListener('click', closeInvitation);
+  if (btnCloseSheet) btnCloseSheet.addEventListener('click', closeInvitation);
+  if (sheetHandle) sheetHandle.addEventListener('click', closeInvitation);
 
   if (btnAutoScroll) {
     btnAutoScroll.addEventListener('click', (e) => {

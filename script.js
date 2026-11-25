@@ -129,19 +129,19 @@ function initApp() {
     playMusic();
     setBadgeText("The Wedding of Niar & Reski");
 
-    // Langkah 1: Pendaran Cahaya Lembut & Mekarkan Monogram/Nama serta Foto 1 (280ms)
+    // Langkah 1: Pendaran Cahaya Lembut & Mekarkan Monogram/Nama (280ms)
     const t1 = setTimeout(() => {
       monogramContainer.classList.add('bloom-revealed');
-      const coverCouple = document.getElementById('coverCoupleContainer');
-      if (coverCouple) coverCouple.classList.add('couple-revealed');
     }, 280);
     animationTimeouts.push(t1);
 
-    // Langkah 2: Munculkan Kartu Tamu & Tombol Buka Undangan bersamaan dengan creator (1000ms)
+    // Langkah 2: Munculkan Foto Mempelai & Kartu Tamu BERSAMAAN (850ms)
     const t2 = setTimeout(() => {
+      const coverCouple = document.getElementById('coverCoupleContainer');
+      if (coverCouple) coverCouple.classList.add('couple-revealed');
       coverCard.classList.add('card-revealed');
       if (coverCreator) coverCreator.classList.add('card-revealed');
-    }, 1000);
+    }, 850);
     animationTimeouts.push(t2);
   }
 

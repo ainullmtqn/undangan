@@ -443,26 +443,27 @@ body {
 .cover-couple-container {
   position: absolute;
   left: 50%;
-  bottom: clamp(100px, 12vh, 125px);
-  transform: translateX(-50%) translateY(18px) scale(0.96);
-  height: clamp(260px, 34vh, 320px);
+  bottom: clamp(185px, 23vh, 215px);
+  transform: translateX(-50%) translateY(20px) scale(0.96);
+  height: clamp(310px, 39vh, 360px);
   width: auto;
   z-index: 14;
   pointer-events: none;
-  filter: drop-shadow(0 10px 24px rgba(35, 20, 15, 0.28));
+  filter: blur(4px) drop-shadow(0 10px 24px rgba(35, 20, 15, 0.28));
   opacity: 0;
   visibility: hidden;
-  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.35s,
-              transform 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.35s;
-  will-change: opacity, transform;
+  transition: opacity 1.0s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 1.0s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform, filter;
 }
 
 .cover-couple-container.couple-revealed,
-.bloom-revealed ~ .cover-couple-container,
 .state-cover-final .cover-couple-container {
   opacity: 1;
   visibility: visible;
   transform: translateX(-50%) translateY(0) scale(1.0);
+  filter: blur(0) drop-shadow(0 10px 24px rgba(35, 20, 15, 0.28));
 }
 
 .cover-couple-img {
@@ -485,7 +486,7 @@ body {
   z-index: 20;
   pointer-events: none;
   opacity: 0;
-  transform: translateY(18px);
+  transform: translateY(20px);
   filter: blur(4px);
   transition: opacity 1.0s cubic-bezier(0.16, 1, 0.3, 1),
               transform 1.0s cubic-bezier(0.16, 1, 0.3, 1),
@@ -504,14 +505,14 @@ body {
 
 .card-inner {
   position: relative;
-  background: rgba(255, 255, 255, 0.52);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.75);
+  background: #ffffff;
+  border: 1.5px solid rgba(212, 175, 55, 0.45);
   border-radius: 20px;
   padding: 16px 16px;
   text-align: center;
-  box-shadow: 0 15px 35px rgba(35, 25, 20, 0.12), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+  box-shadow: 0 16px 38px rgba(35, 25, 20, 0.2), 
+              0 2px 8px rgba(0, 0, 0, 0.06),
+              inset 0 0 0 1px rgba(255, 255, 255, 0.8);
   transform: translateZ(0);
   -webkit-transform: translateZ(0);
   will-change: opacity;

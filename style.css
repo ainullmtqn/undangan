@@ -793,16 +793,78 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 6px 0 16px 0;
+  margin: 10px 0 18px 0;
 }
 
-.couple-baroque-photo {
+.couple-baroque-frame {
+  position: relative;
   width: 175px;
-  max-width: 82%;
-  height: auto;
+  height: 235px;
   border-radius: 50%;
-  filter: drop-shadow(0 10px 25px rgba(60, 45, 35, 0.25));
+  padding: 8px;
+  background: linear-gradient(135deg, #e6c875 0%, #d4af37 25%, #997828 50%, #f3db98 75%, #b58d2a 100%);
+  box-shadow: 0 10px 28px rgba(60, 45, 35, 0.28), 
+              0 0 0 3px #faf7f2, 
+              0 0 0 4.5px rgba(212, 175, 55, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.couple-baroque-frame:hover {
+  transform: scale(1.02);
+}
+
+.frame-crest-top {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #483227;
+  color: #f7d282;
+  border: 1.5px solid #d4af37;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.35);
+  z-index: 5;
+}
+
+.couple-photo-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #ffffff;
+  background-color: #2b1f1a;
+}
+
+.couple-real-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
   display: block;
+  transition: transform 0.4s ease;
+}
+
+.couple-photo-wrapper:hover .couple-real-photo {
+  transform: scale(1.05);
+}
+
+.couple-photo-wrapper::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  box-shadow: inset 0 0 18px rgba(40, 20, 10, 0.35);
+  pointer-events: none;
 }
 
 .parents-honor-box {
@@ -1035,19 +1097,60 @@ body {
 /* Section 5: Polaroid 3-Photo Couple Strip */
 .polaroid-strip-card {
   background: #ffffff;
-  padding: 8px 8px 14px 8px;
-  border-radius: 4px;
+  padding: 10px 10px 12px 10px;
+  border-radius: 6px;
   box-shadow: 0 10px 30px rgba(60, 45, 35, 0.15);
-  max-width: 210px;
+  max-width: 320px;
   margin: 0 auto;
   transform: rotate(-1deg);
-  border: 1px solid rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  transition: transform 0.3s ease;
 }
 
-.polaroid-strip-img {
+.polaroid-strip-card:hover {
+  transform: rotate(0deg) scale(1.02);
+}
+
+.polaroid-photos-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.polaroid-photo-item {
+  background: #faf7f2;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 4px;
+  padding: 4px 4px 10px 4px;
+  box-shadow: 0 2px 6px rgba(60, 45, 35, 0.08);
+}
+
+.polaroid-img-frame {
   width: 100%;
-  height: auto;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 2px;
+  background-color: #eee4d6;
+}
+
+.polaroid-real-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   display: block;
+  transition: transform 0.3s ease;
+}
+
+.polaroid-photo-item:hover .polaroid-real-img {
+  transform: scale(1.06);
+}
+
+.polaroid-strip-caption {
+  font-family: 'Alex Brush', cursive;
+  font-size: 22px;
+  color: #5c473c;
+  margin-top: 8px;
+  text-align: center;
 }
 
 .closing-love-message {

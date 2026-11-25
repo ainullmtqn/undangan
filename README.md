@@ -15,11 +15,25 @@ Website undangan pernikahan digital bernuansa vintage Victorian & botanical gard
 - `script.js`: Logika interaktif, animasi pembukaan, musik, hitung mundur, auto-scroll, dan pengelolaan ucapan.
 - `sampul.jpg`: Gambar latar belakang sampul.
 - `music.mp3`: Musik latar pernikahan.
-- `assets/`: Aset esensial:
+- `assets/`: Aset gambar & ornamen:
+  - `foto_pengantin.jpg`: Foto utama kedua mempelai dalam bingkai Barok oval emas.
+  - `foto_gallery_1.jpg`: Foto kenangan polaroid 1.
+  - `foto_gallery_2.jpg`: Foto kenangan polaroid 2.
+  - `foto_gallery_3.jpg`: Foto kenangan polaroid 3.
   - `cameo_brooch.png`: Pin medali emas N & R.
-  - `couple_frame.png`: Foto mempelai berbingkai emas Barok.
   - `lace_border.svg`: Ornamen renda Victorian.
-  - `polaroid_strip.png`: Galeri 3 foto strip polaroid.
+
+## 📸 Cara Menambahkan / Mengganti Foto Asli
+Anda dapat langsung mengganti file foto di dalam folder `assets/`:
+1. **Foto Utama Mempelai (Bingkai Oval Barok)**:
+   Ganti file `assets/foto_pengantin.jpg` dengan foto Anda.
+2. **Foto Kenangan (Strip Polaroid)**:
+   Ganti 3 file foto berikut:
+   - `assets/foto_gallery_1.jpg`
+   - `assets/foto_gallery_2.jpg`
+   - `assets/foto_gallery_3.jpg`
+
+*Catatan: Sistem secara otomatis menyesuaikan aspek rasio (`object-fit: cover`) sehingga foto tidak akan gepeng atau terdistorsi.*
 
 ## Pembuat
 create by ainulmtqn

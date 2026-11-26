@@ -577,7 +577,8 @@ function initApp() {
   updateCountdown();
   setInterval(updateCountdown, 1000);
 
-  // Dynamic Wishes Controller with LocalStorage Persistence
+  // Dynamic Wishes Controller with Google Sheets & LocalStorage Persistence
+  const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzLWokGwBVDuJGRo10VLZ9Wqw2gLaewgt04UzrbYutd1mT3d-zPED5ItgnMyMw-yaam/exec';
   const rsvpForm = document.getElementById('rsvpForm');
   const rsvpNameInput = document.getElementById('rsvpName');
   const rsvpWishInput = document.getElementById('rsvpWish');
@@ -597,6 +598,8 @@ function initApp() {
     }
   ];
 
+  let cloudWishes = [];
+
   function getStoredWishes() {
     try {
       const data = localStorage.getItem(STORAGE_KEY_WISHES);
@@ -606,7 +609,7 @@ function initApp() {
     }
   }
 
-  function saveWish(name, text) {
+  function saveWishLocal(name, text) {
     try {
       const current = getStoredWishes();
       current.unshift({ name, text, date: new Date().toLocaleDateString('id-ID') });
@@ -614,13 +617,64 @@ function initApp() {
     } catch (err) {}
   }
 
+  // Ambil ucapan dari Google Sheets Database
+  async function fetchCloudWishes() {
+    if (!GOOGLE_SCRIPT_URL) return;
+    try {
+      const response = await fetch(GOOGLE_SCRIPT_URL, { redirect: 'follow' });
+      if (response.ok) {
+        const data = await response.json();
+        if (Array.isArray(data) && data.length > 0) {
+          cloudWishes = data;
+          renderWishesList();
+        }
+      }
+    } catch (err) {
+      console.warn('Info: Menampilkan ucapan offline/lokal.', err);
+    }
+  }
+
+  // Kirim ucapan ke Google Sheets Database
+  async function sendWishToGoogleSheets(name, wish) {
+    if (!GOOGLE_SCRIPT_URL) return;
+    try {
+      // Gunakan Content-Type text/plain agar browser tidak mengirimkan preflight OPTIONS yang ditolak Google Apps Script
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'text/plain;charset=utf-8'
+        },
+        body: JSON.stringify({ name: name, wish: wish })
+      });
+      // Sinkronisasi ulang daftar pesan dari cloud setelah 1.5 detik
+      setTimeout(fetchCloudWishes, 1500);
+    } catch (err) {
+      console.warn('Gagal menyimpan ke Google Sheets, data tetap aman di lokal:', err);
+    }
+  }
+
   function renderWishesList() {
     if (!wishesList) return;
     const userWishes = getStoredWishes();
-    const allWishes = [...userWishes, ...DEFAULT_WISHES];
+
+    // Gabungkan ucapan dari cloud, lokal, dan default dengan deduplikasi
+    const combined = [];
+    const seen = new Set();
+
+    [...cloudWishes, ...userWishes, ...DEFAULT_WISHES].forEach(item => {
+      const key = `${(item.name || '').trim().toLowerCase()}_${(item.text || item.wish || '').trim().toLowerCase()}`;
+      if (!seen.has(key) && item.name && (item.text || item.wish)) {
+        seen.add(key);
+        combined.push({
+          name: item.name,
+          text: item.text || item.wish
+        });
+      }
+    });
 
     wishesList.innerHTML = '';
-    allWishes.forEach(item => {
+    combined.forEach(item => {
       const el = document.createElement('div');
       el.className = 'wish-item-vintage';
       el.innerHTML = `<strong>${escapeHtml(item.name)}</strong><p>${escapeHtml(item.text)}</p>`;
@@ -633,8 +687,9 @@ function initApp() {
     rsvpNameInput.value = guestQuery;
   }
 
-  // Render wishes list immediately on load (including any saved from previous sessions)
+  // Render ucapan segera saat halaman dimuat & ambil pembaruan dari database cloud
   renderWishesList();
+  fetchCloudWishes();
 
   function handleRsvpSubmit(e) {
     if (e) e.preventDefault();
@@ -653,11 +708,12 @@ function initApp() {
       return;
     }
 
-    // Save permanently to localStorage so reload NEVER loses it
-    saveWish(name, wish);
-
-    // Re-render wishes list with the new wish on top
+    // 1. Simpan di lokal agar langsung terlihat seketika (optimistic UI)
+    saveWishLocal(name, wish);
     renderWishesList();
+
+    // 2. Kirim ke Google Sheets di latar belakang
+    sendWishToGoogleSheets(name, wish);
 
     if (rsvpStatusAlert) {
       rsvpStatusAlert.style.display = 'block';

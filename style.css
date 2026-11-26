@@ -638,57 +638,50 @@ body {
   width: 100%;
 }
 
-/* Button: Share Kebahagiaan (Instagram Story & Share Sheet) */
+/* Button: Share Kebahagiaan (Frameless Elegant Text Link) */
 .btn-share-story {
   width: auto;
-  min-width: 135px;
-  max-width: 165px;
-  margin: 0 auto;
-  padding: 5px 12px;
-  background: rgba(255, 255, 255, 0.95);
-  border: 1px solid rgba(212, 175, 55, 0.75);
-  border-radius: 20px;
-  color: #4a3429;
+  margin: 3px auto 0 auto;
+  padding: 4px 8px;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  outline: none;
+  color: #7d6b62;
   font-family: var(--font-sans);
-  font-size: 10px;
-  font-weight: 600;
+  font-size: 11px;
+  font-weight: 500;
   letter-spacing: 0.04em;
   cursor: pointer;
   display: inline-flex;
-  flex-direction: row !important;
-  flex-wrap: nowrap !important;
   align-items: center;
   justify-content: center;
   white-space: nowrap !important;
-  line-height: 1;
-  gap: 5px;
-  position: relative;
-  box-shadow: 0 2px 8px rgba(60, 42, 32, 0.08);
-  transition: all 0.25s ease;
+  line-height: 1.2;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(212, 175, 55, 0.45);
+  transition: color 0.25s ease, text-decoration-color 0.25s ease, opacity 0.2s ease;
 }
 
 .btn-share-story:hover {
-  background: #fffdf9;
-  border-color: #d4af37;
-  color: #1f120a;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.25);
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: #3d2b22;
+  text-decoration-color: #d4af37;
+  transform: none !important;
 }
 
 .btn-share-story:active {
-  transform: scale(0.97);
+  opacity: 0.65;
+  transform: none !important;
 }
 
 .btn-share-story.is-loading {
   pointer-events: none;
-  opacity: 0.7;
-}
-
-.btn-story-icon {
-  font-size: 11px;
-  display: inline-flex;
-  align-items: center;
-  line-height: 1;
+  opacity: 0.6;
 }
 
 .btn-story-text {

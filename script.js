@@ -292,7 +292,7 @@ function initApp() {
   });
 
   // ========================================================
-  // INSTAGRAM STORY SHARE & WEBSHARE API HANDLER
+  // INSTAGRAM STORY DIRECT DEEP LINK & COVER SHARE
   // ========================================================
   let toastTimer = null;
   function showStoryToast(message, duration = 4000) {
@@ -305,93 +305,74 @@ function initApp() {
     }, duration);
   }
 
-  let cachedStoryBlob = null;
   let isSharingStory = false;
 
   async function handleShareStory() {
     if (isSharingStory) return;
     isSharingStory = true;
 
-    const originalBtnContent = btnShareStory ? btnShareStory.innerHTML : '';
     if (btnShareStory) {
       btnShareStory.classList.add('is-loading');
-      btnShareStory.innerHTML = '<span class="btn-story-icon">⏳</span><span class="btn-story-text">Menyiapkan Story...</span>';
+      btnShareStory.innerHTML = '<span class="btn-story-text">Membuka Story IG...</span>';
     }
 
     try {
-      // 1. Ambil aset gambar Instagram Story 9:16
-      if (!cachedStoryBlob) {
-        const response = await fetch('assets/story_cover.jpg');
-        if (!response.ok) throw new Error('Failed to load story cover image');
-        cachedStoryBlob = await response.blob();
+      // 1. Download file gambar sampul 9:16 ke galeri perangkat
+      const downloadLink = document.createElement('a');
+      downloadLink.href = 'assets/story_cover.jpg';
+      downloadLink.download = 'Sampul-Undangan-Niar-Reski.jpg';
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      setTimeout(() => {
+        if (downloadLink.parentNode) {
+          downloadLink.parentNode.removeChild(downloadLink);
+        }
+      }, 500);
+
+      // 2. Salin URL undangan ke clipboard untuk stiker tautan IG Story
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        try {
+          await navigator.clipboard.writeText(window.location.href);
+        } catch (clipErr) {
+          console.warn('Clipboard write warning:', clipErr);
+        }
       }
 
-      const file = new File([cachedStoryBlob], 'The-Wedding-Niar-Reski-Story.jpg', { type: 'image/jpeg' });
+      // 3. Tampilkan toast pemandu
+      showStoryToast('✨ Membuka Story IG... Gambar sampul tersimpan & link disalin!');
 
-      // 2. Gunakan Web Share API jika mendukung file share (iOS Safari, Android Chrome)
-      if (navigator.canShare && navigator.canShare({ files: [file] })) {
-        try {
-          await navigator.share({
-            files: [file],
-            title: 'The Wedding of Niar & Reski',
-            text: 'Turut berbahagia atas pernikahan Niar & Reski ✨ Kunjungi undangan:',
-            url: window.location.href
-          });
-          showStoryToast('✨ Silakan pilih Instagram Stories atau aplikasi tujuan!');
-        } catch (shareErr) {
-          if (shareErr.name !== 'AbortError') {
-            await triggerStoryFallback(cachedStoryBlob);
-          }
-        }
+      // 4. Langsung buka Story Instagram melalui Deep Link
+      const ua = navigator.userAgent || navigator.vendor || window.opera || '';
+      const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+      const isAndroid = /android/i.test(ua);
+
+      if (isIOS) {
+        // iOS: Langsung buka kamera Story Instagram
+        window.location.href = 'instagram://story-camera';
+        setTimeout(() => {
+          window.location.href = 'instagram://camera';
+        }, 1200);
+      } else if (isAndroid) {
+        // Android: Intent langsung ke Story Instagram
+        window.location.href = 'intent://story-camera#Intent;package=com.instagram.android;scheme=instagram;end;';
+        setTimeout(() => {
+          window.location.href = 'intent://#Intent;package=com.instagram.android;end;';
+        }, 1200);
       } else {
-        // Fallback untuk desktop atau browser tanpa Web Share API
-        await triggerStoryFallback(cachedStoryBlob);
+        // Desktop / Browser Web: Buka Instagram di tab baru
+        window.open('https://www.instagram.com/', '_blank');
       }
     } catch (err) {
       console.error('Share story error:', err);
-      showStoryToast('Gagal memproses gambar story. Silakan coba lagi.');
+      showStoryToast('Gagal membuka Instagram. Gambar sampul telah diunduh.');
     } finally {
-      if (btnShareStory) {
-        btnShareStory.classList.remove('is-loading');
-        btnShareStory.innerHTML = originalBtnContent;
-      }
-      isSharingStory = false;
-    }
-  }
-
-  async function triggerStoryFallback(blob) {
-    // 1. Download file gambar story 9:16
-    try {
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'The-Wedding-Niar-Reski-Story.jpg';
-      document.body.appendChild(a);
-      a.click();
       setTimeout(() => {
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-      }, 600);
-    } catch (e) {
-      console.warn('Auto download error', e);
-    }
-
-    // 2. Salin URL undangan ke clipboard untuk stiker link IG
-    let copied = false;
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      try {
-        await navigator.clipboard.writeText(window.location.href);
-        copied = true;
-      } catch (e) {
-        console.warn('Clipboard write failed', e);
-      }
-    }
-
-    // 3. Beri notifikasi toast yang informatif
-    if (copied) {
-      showStoryToast('📸 Gambar Story tersimpan di Galeri & Link undangan disalin untuk stiker IG!');
-    } else {
-      showStoryToast('📸 Gambar Story berhasil diunduh ke galeri!');
+        if (btnShareStory) {
+          btnShareStory.classList.remove('is-loading');
+          btnShareStory.innerHTML = '<span class="btn-story-text">Share Kebahagiaan</span>';
+        }
+        isSharingStory = false;
+      }, 1600);
     }
   }
 

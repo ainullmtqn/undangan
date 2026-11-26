@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="style.css?v=20261126_0005">
+  <link rel="stylesheet" href="style.css?v=20261126_0100">
 </head>
 <body>
 
@@ -86,11 +86,18 @@
           <div class="guest-name" id="guestName">Tamu Undangan</div>
           <p class="guest-note">Mohon maaf bila ada kesalahan penulisan nama/gelar</p>
           
-          <button class="btn-open-invitation" id="btnOpenInvitation">
-            <span class="btn-icon">💌</span>
-            <span class="btn-text">Buka Undangan</span>
-            <span class="btn-shine"></span>
-          </button>
+          <div class="card-action-group">
+            <button class="btn-open-invitation" id="btnOpenInvitation" type="button">
+              <span class="btn-icon">💌</span>
+              <span class="btn-text">Buka Undangan</span>
+              <span class="btn-shine"></span>
+            </button>
+            
+            <button class="btn-share-story" id="btnShareStory" type="button" aria-label="Share Kebahagiaan ke Instagram Story">
+              <span class="btn-story-icon">📸</span>
+              <span class="btn-story-text">Share Kebahagiaan</span>
+            </button>
+          </div>
         </div>
       </div>
 
@@ -347,10 +354,13 @@
 
   </div>
 
+  <!-- Toast Notification for Story Share & Actions -->
+  <div class="story-toast" id="storyToast" role="alert" aria-live="polite"></div>
+
   <!-- Background Audio (User's Custom Soundtrack) -->
   <audio id="bgMusicAudio" src="music.mp3" preload="auto" loop autoplay playsinline webkit-playsinline></audio>
 
   <!-- Main Cinematic Orchestrator -->
-  <script src="script.js?v=20261126_0005"></script>
+  <script src="script.js?v=20261126_0100"></script>
 </body>
 </html>

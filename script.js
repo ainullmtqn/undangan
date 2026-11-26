@@ -11,6 +11,8 @@ function initApp() {
   const monogramContainer = document.getElementById('monogramContainer');
   const coverCard = document.getElementById('coverCard');
   const btnOpenInvitation = document.getElementById('btnOpenInvitation');
+  const btnShareStory = document.getElementById('btnShareStory');
+  const storyToast = document.getElementById('storyToast');
   const invitationSheet = document.getElementById('invitationSheet');
   const btnCloseSheet = document.getElementById('btnCloseSheet');
   const sheetHandle = document.getElementById('sheetHandle');
@@ -288,6 +290,123 @@ function initApp() {
     e.preventDefault();
     openInvitation();
   });
+
+  // ========================================================
+  // INSTAGRAM STORY SHARE & WEBSHARE API HANDLER
+  // ========================================================
+  let toastTimer = null;
+  function showStoryToast(message, duration = 4000) {
+    if (!storyToast) return;
+    storyToast.textContent = message;
+    storyToast.classList.add('toast-visible');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => {
+      storyToast.classList.remove('toast-visible');
+    }, duration);
+  }
+
+  let cachedStoryBlob = null;
+  let isSharingStory = false;
+
+  async function handleShareStory() {
+    if (isSharingStory) return;
+    isSharingStory = true;
+
+    const originalBtnContent = btnShareStory ? btnShareStory.innerHTML : '';
+    if (btnShareStory) {
+      btnShareStory.classList.add('is-loading');
+      btnShareStory.innerHTML = '<span class="btn-story-icon">⏳</span><span class="btn-story-text">Menyiapkan Story...</span>';
+    }
+
+    try {
+      // 1. Ambil aset gambar Instagram Story 9:16
+      if (!cachedStoryBlob) {
+        const response = await fetch('assets/story_cover.jpg');
+        if (!response.ok) throw new Error('Failed to load story cover image');
+        cachedStoryBlob = await response.blob();
+      }
+
+      const file = new File([cachedStoryBlob], 'The-Wedding-Niar-Reski-Story.jpg', { type: 'image/jpeg' });
+
+      // 2. Gunakan Web Share API jika mendukung file share (iOS Safari, Android Chrome)
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        try {
+          await navigator.share({
+            files: [file],
+            title: 'The Wedding of Niar & Reski',
+            text: 'Turut berbahagia atas pernikahan Niar & Reski ✨ Kunjungi undangan:',
+            url: window.location.href
+          });
+          showStoryToast('✨ Silakan pilih Instagram Stories atau aplikasi tujuan!');
+        } catch (shareErr) {
+          if (shareErr.name !== 'AbortError') {
+            await triggerStoryFallback(cachedStoryBlob);
+          }
+        }
+      } else {
+        // Fallback untuk desktop atau browser tanpa Web Share API
+        await triggerStoryFallback(cachedStoryBlob);
+      }
+    } catch (err) {
+      console.error('Share story error:', err);
+      showStoryToast('Gagal memproses gambar story. Silakan coba lagi.');
+    } finally {
+      if (btnShareStory) {
+        btnShareStory.classList.remove('is-loading');
+        btnShareStory.innerHTML = originalBtnContent;
+      }
+      isSharingStory = false;
+    }
+  }
+
+  async function triggerStoryFallback(blob) {
+    // 1. Download file gambar story 9:16
+    try {
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'The-Wedding-Niar-Reski-Story.jpg';
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(() => {
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      }, 600);
+    } catch (e) {
+      console.warn('Auto download error', e);
+    }
+
+    // 2. Salin URL undangan ke clipboard untuk stiker link IG
+    let copied = false;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        copied = true;
+      } catch (e) {
+        console.warn('Clipboard write failed', e);
+      }
+    }
+
+    // 3. Beri notifikasi toast yang informatif
+    if (copied) {
+      showStoryToast('📸 Gambar Story tersimpan di Galeri & Link undangan disalin untuk stiker IG!');
+    } else {
+      showStoryToast('📸 Gambar Story berhasil diunduh ke galeri!');
+    }
+  }
+
+  if (btnShareStory) {
+    btnShareStory.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      handleShareStory();
+    });
+    btnShareStory.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      handleShareStory();
+    });
+  }
   if (btnCloseSheet) btnCloseSheet.addEventListener('click', closeInvitation);
   if (sheetHandle) sheetHandle.addEventListener('click', closeInvitation);
 

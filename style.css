@@ -736,7 +736,12 @@ body {
   position: absolute;
   inset: 0;
   z-index: 50;
-  background: linear-gradient(180deg, #faf7f2 0%, #f6efe3 25%, #f2e9da 55%, #f7f1e5 85%, #fbf8f3 100%);
+  background-color: #f7f1e7;
+  background-image: 
+    url('assets/lontara_pattern.svg'),
+    linear-gradient(180deg, rgba(250, 247, 242, 0.94) 0%, rgba(246, 239, 227, 0.9) 25%, rgba(242, 233, 218, 0.9) 55%, rgba(247, 241, 229, 0.92) 85%, rgba(251, 248, 243, 0.95) 100%);
+  background-repeat: repeat, no-repeat;
+  background-size: 420px 420px, 100% 100%;
   border-radius: inherit;
   transform: translateY(105%);
   transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
@@ -833,6 +838,29 @@ body {
 /* Bismillah & Quranic Verse */
 .verse-section {
   margin-bottom: 20px;
+}
+
+/* Makassar Lontara Cultural Accents */
+.verse-lontara-motif {
+  font-family: 'Noto Sans Buginese', 'Segoe UI Historic', 'Leelawadee UI', serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #9c6c4c;
+  letter-spacing: 0.22em;
+  margin-bottom: 10px;
+  opacity: 0.85;
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8);
+}
+
+.hero-lontara-badge {
+  font-family: 'Noto Sans Buginese', 'Segoe UI Historic', 'Leelawadee UI', serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #9c6c4c;
+  letter-spacing: 0.18em;
+  margin: -2px 0 14px 0;
+  opacity: 0.88;
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8);
 }
 
 .bismillah-arabic {

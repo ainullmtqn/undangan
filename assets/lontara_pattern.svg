@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="480" viewBox="0 0 480 480">
+  <defs>
+    <style>
+      .lontara-text {
+        font-family: 'Noto Sans Buginese', 'Segoe UI Historic', 'Leelawadee UI', serif;
+        font-size: 15px;
+        fill: #5a3d28;
+        font-weight: 500;
+        letter-spacing: 3.5px;
+      }
+    </style>
+  </defs>
+  <g transform="rotate(-12, 240, 240)" opacity="0.065">
+    <text x="-60" y="35" class="lontara-text">ᨔᨗᨄᨀᨈᨕᨘ ᨞ ᨔᨗᨄᨀᨒᨙᨅᨗ ᨞ ᨔᨗᨄᨀᨕᨗᨂᨙ ᨞ ᨊᨘᨑᨘ ᨑᨖᨆᨊᨗᨕᨑ ᨞ ᨆᨘᨖ ᨑᨙᨔᨀᨗ</text>
+    <text x="-90" y="85" class="lontara-text">ᨅᨍᨗ ᨅᨍᨗ ᨕᨆᨀᨗ ᨞ ᨔᨒᨆ ᨔᨒᨆ ᨕᨆᨗᨋ ᨞ ᨔᨗᨑᨗ ᨊ ᨄᨌᨙ</text>
+    <text x="-40" y="135" class="lontara-text">ᨓᨒᨗᨆᨈᨘ ᨕᨘᨑᨘᨔᨘ ᨞ ᨊᨗᨕ ᨞ ᨑᨙᨔᨀᨗ ᨞ ᨕᨀᨉ ᨊᨗᨀ ᨞ ᨑᨙᨔᨙᨄᨔᨗ</text>
+    <text x="-80" y="185" class="lontara-text">ᨔᨗᨄᨀᨈᨕᨘ ᨞ ᨔᨗᨄᨀᨒᨙᨅᨗ ᨞ ᨔᨗᨄᨀᨕᨗᨂᨙ ᨞ ᨈᨀᨒ ᨞ ᨔᨘᨒᨓᨙᨔᨗ</text>
+    <text x="-50" y="235" class="lontara-text">ᨊᨘᨑᨘ ᨑᨖᨆᨊᨗᨕᨑ ᨞ ᨆᨘᨖ ᨑᨙᨔᨀᨗ ᨞ ᨔᨗᨑᨗ ᨊ ᨄᨌᨙ</text>
+    <text x="-100" y="285" class="lontara-text">ᨅᨍᨗ ᨅᨍᨗ ᨕᨆᨀᨗ ᨞ ᨔᨒᨆ ᨔᨒᨆ ᨞ ᨓᨒᨗᨆᨈᨘ ᨕᨘᨑᨘᨔᨘ</text>
+    <text x="-30" y="335" class="lontara-text">ᨔᨗᨄᨀᨈᨕᨘ ᨞ ᨔᨗᨄᨀᨒᨙᨅᨗ ᨞ ᨔᨗᨄᨀᨕᨗᨂᨙ ᨞ ᨕᨀᨉ ᨊᨗᨀ</text>
+    <text x="-70" y="385" class="lontara-text">ᨊᨗᨕ ᨞ ᨑᨙᨔᨀᨗ ᨞ ᨑᨙᨔᨙᨄᨔᨗ ᨞ ᨈᨀᨒ ᨞ ᨔᨘᨒᨓᨙᨔᨗ</text>
+    <text x="-40" y="435" class="lontara-text">ᨔᨗᨄᨀᨈᨕᨘ ᨞ ᨔᨗᨄᨀᨒᨙᨅᨗ ᨞ ᨔᨗᨄᨀᨕᨗᨂᨙ ᨞ ᨔᨗᨑᨗ ᨊ ᨄᨌᨙ</text>
+    <text x="-80" y="485" class="lontara-text">ᨊᨘᨑᨘ ᨑᨖᨆᨊᨗᨕᨑ ᨞ ᨆᨘᨖ ᨑᨙᨔᨀᨗ ᨞ ᨓᨒᨗᨆᨈᨘ ᨕᨘᨑᨘᨔᨘ</text>
+  </g>
+</svg>

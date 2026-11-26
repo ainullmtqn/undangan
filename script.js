@@ -617,15 +617,28 @@ function initApp() {
     } catch (err) {}
   }
 
-  // Ambil ucapan dari Google Sheets Database
+  // Ambil ucapan dari Google Sheets Database (Dapat dilihat oleh semua tamu)
   async function fetchCloudWishes() {
     if (!GOOGLE_SCRIPT_URL) return;
     try {
       const response = await fetch(GOOGLE_SCRIPT_URL, { redirect: 'follow' });
       if (response.ok) {
-        const data = await response.json();
-        if (Array.isArray(data) && data.length > 0) {
-          cloudWishes = data;
+        const raw = await response.json();
+        let items = [];
+        if (Array.isArray(raw)) {
+          items = raw;
+        } else if (raw && Array.isArray(raw.data)) {
+          items = raw.data;
+        } else if (raw && Array.isArray(raw.wishes)) {
+          items = raw.wishes;
+        }
+
+        if (items.length > 0) {
+          cloudWishes = items.map(it => ({
+            name: it.name || it.nama || 'Tamu Undangan',
+            text: it.text || it.wish || it.pesan || it.message || '',
+            date: it.date || it.timestamp || it.waktu || ''
+          })).filter(it => it.text);
           renderWishesList();
         }
       }
@@ -645,10 +658,17 @@ function initApp() {
         headers: {
           'Content-Type': 'text/plain;charset=utf-8'
         },
-        body: JSON.stringify({ name: name, wish: wish })
+        body: JSON.stringify({
+          name: name,
+          nama: name,
+          wish: wish,
+          text: wish,
+          pesan: wish
+        })
       });
-      // Sinkronisasi ulang daftar pesan dari cloud setelah 1.5 detik
+      // Sinkronisasi ulang daftar pesan dari cloud setelah pengiriman
       setTimeout(fetchCloudWishes, 1500);
+      setTimeout(fetchCloudWishes, 4000);
     } catch (err) {
       console.warn('Gagal menyimpan ke Google Sheets, data tetap aman di lokal:', err);
     }
@@ -658,18 +678,18 @@ function initApp() {
     if (!wishesList) return;
     const userWishes = getStoredWishes();
 
-    // Gabungkan ucapan dari cloud, lokal, dan default dengan deduplikasi
+    // Gabungkan ucapan dari cloud (semua tamu), lokal, dan default dengan deduplikasi
     const combined = [];
     const seen = new Set();
 
     [...cloudWishes, ...userWishes, ...DEFAULT_WISHES].forEach(item => {
-      const key = `${(item.name || '').trim().toLowerCase()}_${(item.text || item.wish || '').trim().toLowerCase()}`;
-      if (!seen.has(key) && item.name && (item.text || item.wish)) {
+      const name = (item.name || item.nama || '').trim();
+      const text = (item.text || item.wish || item.pesan || '').trim();
+      const date = item.date || item.timestamp || item.waktu || '';
+      const key = `${name.toLowerCase()}_${text.toLowerCase()}`;
+      if (!seen.has(key) && name && text) {
         seen.add(key);
-        combined.push({
-          name: item.name,
-          text: item.text || item.wish
-        });
+        combined.push({ name, text, date });
       }
     });
 
@@ -677,7 +697,26 @@ function initApp() {
     combined.forEach(item => {
       const el = document.createElement('div');
       el.className = 'wish-item-vintage';
-      el.innerHTML = `<strong>${escapeHtml(item.name)}</strong><p>${escapeHtml(item.text)}</p>`;
+
+      let dateHtml = '';
+      if (item.date) {
+        let dateStr = String(item.date);
+        try {
+          const d = new Date(item.date);
+          if (!isNaN(d.getTime())) {
+            dateStr = d.toLocaleDateString('id-ID', { day: 'numeric', month: 'short' });
+          }
+        } catch (e) {}
+        dateHtml = `<span class="wish-item-date">${escapeHtml(dateStr)}</span>`;
+      }
+
+      el.innerHTML = `
+        <div class="wish-item-header">
+          <strong>${escapeHtml(item.name)}</strong>
+          ${dateHtml}
+        </div>
+        <p>${escapeHtml(item.text)}</p>
+      `;
       wishesList.appendChild(el);
     });
   }
@@ -690,6 +729,8 @@ function initApp() {
   // Render ucapan segera saat halaman dimuat & ambil pembaruan dari database cloud
   renderWishesList();
   fetchCloudWishes();
+  // Sinkronisasi otomatis berkala setiap 10 detik agar ucapan tamu baru langsung muncul untuk siapapun yang membuka
+  setInterval(fetchCloudWishes, 10000);
 
   function handleRsvpSubmit(e) {
     if (e) e.preventDefault();

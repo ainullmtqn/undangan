@@ -1444,6 +1444,25 @@ body {
   margin-bottom: 2px;
 }
 
+.wish-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 2px;
+}
+
+.wish-item-header strong {
+  margin-bottom: 0;
+}
+
+.wish-item-date {
+  font-size: 10px;
+  color: #9c8a7d;
+  font-family: var(--font-sans);
+  white-space: nowrap;
+}
+
 .wish-item-vintage p {
   font-size: 12px;
   color: #5c473c;

@@ -70,11 +70,17 @@ function initApp() {
     });
   }
 
-  // Parse Guest Name from URL parameter (?to= or ?u=)
+  // Parse Guest Name from URL parameter (?to=, ?u=, or ?nama=)
   const urlParams = new URLSearchParams(window.location.search);
-  const guestQuery = urlParams.get('to') || urlParams.get('u') || urlParams.get('nama');
-  if (guestQuery) {
-    guestNameEl.textContent = decodeURIComponent(guestQuery);
+  const rawGuest = urlParams.get('to') || urlParams.get('u') || urlParams.get('nama');
+  let guestQuery = '';
+  if (rawGuest) {
+    try {
+      guestQuery = decodeURIComponent(rawGuest.replace(/\+/g, ' '));
+    } catch (e) {
+      guestQuery = rawGuest;
+    }
+    if (guestNameEl) guestNameEl.textContent = guestQuery;
   }
 
   // Create subtle floating particles in background
@@ -557,9 +563,9 @@ function initApp() {
     });
   }
 
-  // Pre-fill name if guest query exists (?to= or ?u=)
+  // Pre-fill name if guest query exists (?to=, ?u=, or ?nama=)
   if (guestQuery && rsvpNameInput) {
-    rsvpNameInput.value = decodeURIComponent(guestQuery);
+    rsvpNameInput.value = guestQuery;
   }
 
   // Render wishes list immediately on load (including any saved from previous sessions)

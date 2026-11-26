@@ -812,39 +812,6 @@ body {
   overflow: hidden;
 }
 
-/* Ambient Lontara Watermark Layer */
-.lontara-bg-watermark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  user-select: none;
-  z-index: 0;
-  overflow: hidden;
-  opacity: 0.14;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  gap: 52px;
-  padding: 30px 0;
-}
-
-.lontara-watermark-row {
-  font-family: 'Noto Sans Buginese', 'Segoe UI Historic', 'Leelawadee UI', serif;
-  font-size: 21px;
-  font-weight: 700;
-  color: #583318;
-  letter-spacing: 0.22em;
-  white-space: nowrap;
-  transform: rotate(-11deg) scale(1.15);
-  transform-origin: center center;
-  text-shadow: 0 0 1px rgba(88, 51, 24, 0.35);
-}
-
 .sheet-section {
   margin-bottom: 26px;
   position: relative;

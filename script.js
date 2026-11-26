@@ -313,13 +313,73 @@ function initApp() {
 
   let cachedStoryFile = null;
 
+  // Generator gambar sampul dinamis beresolusi tinggi (1080x1920) dengan nama tamu khusus
+  function generateCustomStoryImage(name) {
+    return new Promise((resolve) => {
+      const img = new Image();
+      img.crossOrigin = 'anonymous';
+      img.onload = () => {
+        try {
+          const canvas = document.createElement('canvas');
+          canvas.width = 1080;
+          canvas.height = 1920;
+          const ctx = canvas.getContext('2d');
+
+          // 1. Gambar template dasar sampul (1080x1920)
+          ctx.drawImage(img, 0, 0, 1080, 1920);
+
+          // 2. Tentukan nama tamu yang akan dicetak
+          const displayName = (name && name.trim()) ? name.trim() : 'Tamu Undangan';
+
+          // 3. Ukuran font adaptif agar nama panjang tidak terpotong
+          let fontSize = 48;
+          ctx.font = `bold ${fontSize}px "Playfair Display", Georgia, serif`;
+          let textWidth = ctx.measureText(displayName).width;
+          const maxAllowedWidth = 760; // Batas lebar aman kartu
+
+          if (textWidth > maxAllowedWidth) {
+            fontSize = Math.max(26, Math.floor(fontSize * (maxAllowedWidth / textWidth)));
+            ctx.font = `bold ${fontSize}px "Playfair Display", Georgia, serif`;
+          }
+
+          ctx.fillStyle = '#221611';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'top';
+          // Posisi Y = 1495 (persis posisi nama tamu di dalam kartu sampul)
+          ctx.fillText(displayName, 540, 1495);
+
+          canvas.toBlob((blob) => {
+            if (blob) {
+              resolve(new File([blob], 'Sampul-Undangan-Niar-Reski.jpg', { type: 'image/jpeg' }));
+            } else {
+              resolve(null);
+            }
+          }, 'image/jpeg', 0.95);
+        } catch (canvasErr) {
+          console.warn('Canvas story error:', canvasErr);
+          resolve(null);
+        }
+      };
+      img.onerror = () => resolve(null);
+      img.src = 'assets/story_base.jpg';
+    });
+  }
+
   // Pre-load gambar sampul di background agar user-gesture instan & zero-latency
   async function preloadStoryCover() {
     try {
-      const response = await fetch('assets/story_cover.jpg');
-      if (response.ok) {
-        const blob = await response.blob();
-        cachedStoryFile = new File([blob], 'The-Wedding-Niar-Reski-Sampul.jpg', { type: 'image/jpeg' });
+      if (document.fonts && document.fonts.ready) {
+        await document.fonts.ready;
+      }
+      if (guestQuery && guestQuery.trim() && guestQuery.trim() !== 'Tamu Undangan') {
+        cachedStoryFile = await generateCustomStoryImage(guestQuery);
+      }
+      if (!cachedStoryFile) {
+        const response = await fetch('assets/story_cover.jpg');
+        if (response.ok) {
+          const blob = await response.blob();
+          cachedStoryFile = new File([blob], 'Sampul-Undangan-Niar-Reski.jpg', { type: 'image/jpeg' });
+        }
       }
     } catch (e) {
       console.warn('Preload story cover error:', e);
@@ -350,9 +410,14 @@ function initApp() {
       // Pastikan file tersedia
       let fileToShare = cachedStoryFile;
       if (!fileToShare) {
-        const response = await fetch('assets/story_cover.jpg');
-        const blob = await response.blob();
-        fileToShare = new File([blob], 'The-Wedding-Niar-Reski-Sampul.jpg', { type: 'image/jpeg' });
+        if (guestQuery && guestQuery.trim() && guestQuery.trim() !== 'Tamu Undangan') {
+          fileToShare = await generateCustomStoryImage(guestQuery);
+        }
+        if (!fileToShare) {
+          const response = await fetch('assets/story_cover.jpg');
+          const blob = await response.blob();
+          fileToShare = new File([blob], 'Sampul-Undangan-Niar-Reski.jpg', { type: 'image/jpeg' });
+        }
         cachedStoryFile = fileToShare;
       }
 

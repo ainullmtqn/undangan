@@ -876,40 +876,6 @@ body {
   margin-bottom: 20px;
 }
 
-/* Makassar Lontara Cultural Accents */
-.verse-lontara-motif {
-  font-family: 'Noto Sans Buginese', 'Segoe UI Historic', 'Leelawadee UI', serif;
-  font-size: 16.5px;
-  font-weight: 700;
-  color: #7b421d;
-  letter-spacing: 0.22em;
-  margin-bottom: 12px;
-  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.95);
-  display: inline-block;
-}
-
-.hero-lontara-badge {
-  font-family: 'Noto Sans Buginese', 'Segoe UI Historic', 'Leelawadee UI', serif;
-  font-size: 18px;
-  font-weight: 700;
-  color: #7b421d;
-  letter-spacing: 0.2em;
-  margin: -2px 0 16px 0;
-  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.95);
-  display: inline-block;
-}
-
-.section-lontara-motif {
-  font-family: 'Noto Sans Buginese', 'Segoe UI Historic', 'Leelawadee UI', serif;
-  font-size: 15px;
-  font-weight: 700;
-  color: #824a24;
-  letter-spacing: 0.2em;
-  margin: 0 auto 6px auto;
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9);
-  display: inline-block;
-}
-
 .bismillah-arabic {
   font-family: 'Amiri', 'Traditional Arabic', serif;
   font-size: 24px;

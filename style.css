@@ -736,12 +736,12 @@ body {
   position: absolute;
   inset: 0;
   z-index: 50;
-  background-color: #f7f1e7;
+  background-color: #f6eedf;
   background-image: 
     url('assets/lontara_pattern.svg'),
-    linear-gradient(180deg, rgba(250, 247, 242, 0.94) 0%, rgba(246, 239, 227, 0.9) 25%, rgba(242, 233, 218, 0.9) 55%, rgba(247, 241, 229, 0.92) 85%, rgba(251, 248, 243, 0.95) 100%);
+    linear-gradient(180deg, #faf6ee 0%, #f6ede0 25%, #f0e3cc 55%, #f6ede0 85%, #fbf8f2 100%);
   background-repeat: repeat, no-repeat;
-  background-size: 420px 420px, 100% 100%;
+  background-size: 380px 380px, 100% 100%;
   border-radius: inherit;
   transform: translateY(105%);
   transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
@@ -806,13 +806,49 @@ body {
 }
 
 .sheet-content {
+  position: relative;
   padding: 4px 18px 45px 18px;
   text-align: center;
+  overflow: hidden;
+}
+
+/* Ambient Lontara Watermark Layer */
+.lontara-bg-watermark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  overflow: hidden;
+  opacity: 0.14;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 52px;
+  padding: 30px 0;
+}
+
+.lontara-watermark-row {
+  font-family: 'Noto Sans Buginese', 'Segoe UI Historic', 'Leelawadee UI', serif;
+  font-size: 21px;
+  font-weight: 700;
+  color: #583318;
+  letter-spacing: 0.22em;
+  white-space: nowrap;
+  transform: rotate(-11deg) scale(1.15);
+  transform-origin: center center;
+  text-shadow: 0 0 1px rgba(88, 51, 24, 0.35);
 }
 
 .sheet-section {
   margin-bottom: 26px;
   position: relative;
+  z-index: 2;
 }
 
 /* Script & Calligraphy Typography */
@@ -843,24 +879,35 @@ body {
 /* Makassar Lontara Cultural Accents */
 .verse-lontara-motif {
   font-family: 'Noto Sans Buginese', 'Segoe UI Historic', 'Leelawadee UI', serif;
-  font-size: 13px;
-  font-weight: 600;
-  color: #9c6c4c;
+  font-size: 16.5px;
+  font-weight: 700;
+  color: #7b421d;
   letter-spacing: 0.22em;
-  margin-bottom: 10px;
-  opacity: 0.85;
-  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8);
+  margin-bottom: 12px;
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.95);
+  display: inline-block;
 }
 
 .hero-lontara-badge {
   font-family: 'Noto Sans Buginese', 'Segoe UI Historic', 'Leelawadee UI', serif;
-  font-size: 14px;
-  font-weight: 600;
-  color: #9c6c4c;
-  letter-spacing: 0.18em;
-  margin: -2px 0 14px 0;
-  opacity: 0.88;
-  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8);
+  font-size: 18px;
+  font-weight: 700;
+  color: #7b421d;
+  letter-spacing: 0.2em;
+  margin: -2px 0 16px 0;
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.95);
+  display: inline-block;
+}
+
+.section-lontara-motif {
+  font-family: 'Noto Sans Buginese', 'Segoe UI Historic', 'Leelawadee UI', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #824a24;
+  letter-spacing: 0.2em;
+  margin: 0 auto 6px auto;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9);
+  display: inline-block;
 }
 
 .bismillah-arabic {

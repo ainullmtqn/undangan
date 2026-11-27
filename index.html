@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -7,24 +8,27 @@
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
   <title>The Wedding of Niar & Reski</title>
-  
+
   <!-- Google Fonts Preconnect & Stylesheet with Fallbacks -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&family=Noto+Sans+Buginese:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-  
-  <link rel="stylesheet" href="style.css?v=20261127_0940">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&family=Noto+Sans+Buginese:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css?v=20261127_0950">
 </head>
+
 <body>
 
   <!-- App Container (supports responsive mobile preview on desktop & native fullscreen on mobile) -->
   <div class="app-viewport" id="appViewport">
-    
+
     <!-- Background Camera Container (Cinematic Pan & Zoom Viewport) -->
     <div class="camera-viewport" id="cameraViewport">
       <div class="camera-world" id="cameraWorld">
         <img src="sampul.jpg" alt="Sampul Undangan Niar & Reski" class="invitation-bg-img" id="invitationBg">
-        
+
         <!-- Soft Atmospheric Overlay Layers (Sun rays, subtle golden sparkle, depth lighting) -->
         <div class="cinematic-lighting"></div>
         <div class="cinematic-bloom" id="cinematicBloom"></div>
@@ -37,7 +41,7 @@
 
       <!-- Monogram / Typography Floating Layer -->
       <div class="monogram-container" id="monogramContainer">
-        
+
         <!-- Subtitle (fades in during zoom out) -->
         <div class="the-wedding-label" id="weddingLabel">THE WEDDING OF</div>
 
@@ -47,7 +51,8 @@
           <span class="name-word groom" id="groomWord">
             <span class="letter-initial" id="initialN">N</span>
             <span class="letters-rest" id="restIar">
-              <span class="char" id="charI">i</span><span class="char" id="charA">a</span><span class="char" id="charR">r</span>
+              <span class="char" id="charI">i</span><span class="char" id="charA">a</span><span class="char"
+                id="charR">r</span>
             </span>
           </span>
 
@@ -58,7 +63,8 @@
           <span class="name-word bride" id="brideWord">
             <span class="letter-initial" id="initialR">R</span>
             <span class="letters-rest" id="restEski">
-              <span class="char" id="charE">e</span><span class="char" id="charS">s</span><span class="char" id="charK">k</span><span class="char" id="charI2">i</span>
+              <span class="char" id="charE">e</span><span class="char" id="charS">s</span><span class="char"
+                id="charK">k</span><span class="char" id="charI2">i</span>
             </span>
           </span>
         </div>
@@ -75,7 +81,9 @@
 
       <!-- Couple Illustration on Cover (Foto 1) -->
       <div class="cover-couple-container" id="coverCoupleContainer">
-        <img src="assets/foto1.png?v=20261126_0005" alt="Foto Pengantin Niar & Reski" class="cover-couple-img" id="coverCoupleImg" loading="eager" fetchpriority="high" onerror="if(this.src.indexOf('assets/')!==-1){this.src='Foto1.png';}">
+        <img src="assets/foto1.png?v=20261126_0005" alt="Foto Pengantin Niar & Reski" class="cover-couple-img"
+          id="coverCoupleImg" loading="eager" fetchpriority="high"
+          onerror="if(this.src.indexOf('assets/')!==-1){this.src='Foto1.png';}">
       </div>
 
       <!-- Guest Card & Open Invitation Button (Reveals after zoom-out) -->
@@ -85,15 +93,16 @@
           <div class="guest-salutation">Bapak/Ibu/Saudara/i</div>
           <div class="guest-name" id="guestName">Tamu Undangan</div>
           <p class="guest-note">Mohon maaf bila ada kesalahan penulisan nama/gelar</p>
-          
+
           <div class="card-action-group">
             <button class="btn-open-invitation" id="btnOpenInvitation" type="button">
               <span class="btn-icon">💌</span>
               <span class="btn-text">Buka Undangan</span>
               <span class="btn-shine"></span>
             </button>
-            
-            <button class="btn-share-story" id="btnShareStory" type="button" aria-label="Share Kebahagiaan ke Instagram Story">
+
+            <button class="btn-share-story" id="btnShareStory" type="button"
+              aria-label="Share Kebahagiaan ke Instagram Story">
               <span class="btn-story-text">Share Kebahagiaan</span>
             </button>
           </div>
@@ -117,27 +126,36 @@
         <div class="sheet-section verse-section">
           <div class="bismillah-arabic">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
           <p class="bismillah-meaning">
-            "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang."
+            "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu
+            sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan
+            sayang."
           </p>
           <div class="verse-reference">(QS. Ar-Rum: 21)</div>
         </div>
 
-        <!-- Section 1: Calligraphy & Couple in Oval Baroque Gold Frame -->
+        <!-- Section 1: Calligraphy & Couple Names with Photo in Between -->
         <div class="sheet-section couple-hero-section">
-          <div class="hero-calligraphy-sub">The Wedding of</div>
-          <h1 class="hero-calligraphy-names">Niar & Reski</h1>
-          <div class="couple-hero-banner" id="coupleHeroBanner">
-            <img src="assets/foto_pengantin.jpg?v=20261127" alt="Foto Pengantin Nur Rahmaniar & Muh Reski" class="couple-hero-banner-img" id="coupleMainPhoto">
-          </div>
           <div class="parents-honor-box">
+            <!-- Mempelai Wanita -->
             <div class="honor-card">
               <h2 class="honor-name">Nur Rahmaniar</h2>
-              <p class="honor-parents">Putri tercinta dari<br><strong>Bpk. Rahman Dg Sila</strong> & <strong>Ibu Rahmawati Dg Sunggu</strong></p>
+              <p class="honor-parents">Putri tercinta dari<br><strong>Bpk. Rahman Dg Sila</strong> & <strong>Ibu
+                  Rahmawati Dg Sunggu</strong></p>
             </div>
+
+            <!-- Foto Pengantin di Antara Nama Kedua Mempelai -->
+            <div class="couple-hero-banner" id="coupleHeroBanner">
+              <img src="assets/foto_pengantin.jpg?v=20261127_1" alt="Foto Pengantin Nur Rahmaniar & Muh Reski"
+                class="couple-hero-banner-img" id="coupleMainPhoto">
+            </div>
+
             <div class="honor-ampersand">&</div>
+
+            <!-- Mempelai Pria -->
             <div class="honor-card">
               <h2 class="honor-name">Muh Reski</h2>
-              <p class="honor-parents">Putra tercinta dari<br><strong>Bpk. Misbahu Dg Nanring</strong> & <strong>Ibu Rosmina Dg Tanning</strong></p>
+              <p class="honor-parents">Putra tercinta dari<br><strong>Bpk. Misbahu Dg Nanring</strong> & <strong>Ibu
+                  Rosmina Dg Tanning</strong></p>
             </div>
           </div>
         </div>
@@ -157,14 +175,16 @@
             </div>
             <h2 class="card-script-title">Kepada Keluarga & Sahabat Tercinta</h2>
             <p class="card-lead-text">
-              Dengan penuh rasa syukur dan memohon ridho Allah SWT, kami mengundang Bapak/Ibu/Saudara/i untuk hadir dan merayakan hari istimewa pernikahan kami:
+              Dengan penuh rasa syukur dan memohon ridho Allah SWT, kami mengundang Bapak/Ibu/Saudara/i untuk hadir dan
+              merayakan hari istimewa pernikahan kami:
             </p>
             <div class="wedding-date-highlight">
               <span class="date-digits">20 . 12 . 2026</span>
               <span class="date-day-label">Ahad, 20 Desember 2026</span>
             </div>
             <p class="card-sub-text">
-              Kehadiran serta doa restu Anda merupakan anugerah terindah dan kebahagiaan yang tak terhingga bagi langkah awal perjalanan baru kami.
+              Kehadiran serta doa restu Anda merupakan anugerah terindah dan kebahagiaan yang tak terhingga bagi langkah
+              awal perjalanan baru kami.
             </p>
           </div>
         </div>
@@ -181,10 +201,11 @@
               <p class="tray-venue-address">
                 Kabupaten Takalar, Sulawesi Selatan
               </p>
-              <a href="https://maps.app.goo.gl/XDni6HRjWNSzwWML6" target="_blank" rel="noopener noreferrer" class="btn-maps-vintage">
+              <a href="https://maps.app.goo.gl/XDni6HRjWNSzwWML6" target="_blank" rel="noopener noreferrer"
+                class="btn-maps-vintage">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="maps-icon">
-                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
-                  <circle cx="12" cy="9" r="2.5"/>
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
+                  <circle cx="12" cy="9" r="2.5" />
                 </svg>
                 <span>Buka Google Maps</span>
               </a>
@@ -226,8 +247,9 @@
           <div class="showcase-collage-container">
             <!-- Main Featured Backdrop Photo -->
             <div class="collage-backdrop-frame">
-              <img src="assets/foto_gallery_main.jpg?v=20261127" alt="Foto Kenangan Indah Niar & Reski" class="collage-main-img">
-              
+              <img src="assets/foto_gallery_main.jpg?v=20261127" alt="Foto Kenangan Indah Niar & Reski"
+                class="collage-main-img">
+
               <!-- Floating Blossom Petals Overlay -->
               <span class="blossom-petal petal-1">🌸</span>
               <span class="blossom-petal petal-2">🌸</span>
@@ -240,21 +262,24 @@
               <!-- Left Polaroid: Tilted Left -->
               <div class="polaroid-cluster-card polaroid-left">
                 <div class="polaroid-photo-box">
-                  <img src="assets/foto_gallery_1.jpg?v=20261127" alt="Kenangan Niar & Reski 1" class="polaroid-cluster-img">
+                  <img src="assets/foto_gallery_1.jpg?v=20261127" alt="Kenangan Niar & Reski 1"
+                    class="polaroid-cluster-img">
                 </div>
               </div>
 
               <!-- Center Polaroid: Front & Straight -->
               <div class="polaroid-cluster-card polaroid-center">
                 <div class="polaroid-photo-box">
-                  <img src="assets/foto_gallery_2.jpg?v=20261127" alt="Kenangan Niar & Reski 2" class="polaroid-cluster-img">
+                  <img src="assets/foto_gallery_2.jpg?v=20261127" alt="Kenangan Niar & Reski 2"
+                    class="polaroid-cluster-img">
                 </div>
               </div>
 
               <!-- Right Polaroid: Tilted Right -->
               <div class="polaroid-cluster-card polaroid-right">
                 <div class="polaroid-photo-box">
-                  <img src="assets/foto_gallery_3.jpg?v=20261127" alt="Kenangan Niar & Reski 3" class="polaroid-cluster-img">
+                  <img src="assets/foto_gallery_3.jpg?v=20261127" alt="Kenangan Niar & Reski 3"
+                    class="polaroid-cluster-img">
                 </div>
               </div>
             </div>
@@ -284,7 +309,8 @@
 
             <div class="form-group">
               <label for="rsvpWish" class="form-label">Doa &amp; Pesan Ucapan</label>
-              <textarea id="rsvpWish" class="form-textarea-vintage" rows="4" placeholder="Tuliskan doa restu &amp; ucapan manis untuk kedua mempelai..." required></textarea>
+              <textarea id="rsvpWish" class="form-textarea-vintage" rows="4"
+                placeholder="Tuliskan doa restu &amp; ucapan manis untuk kedua mempelai..." required></textarea>
             </div>
 
             <button type="submit" class="btn-submit-vintage" id="btnSubmitRsvp">
@@ -321,22 +347,26 @@
       <button class="floating-btn floating-audio-btn" id="btnFloatingAudio" aria-label="Toggle Musik" title="Musik">
         <!-- Playing State (Speaker with Sound Waves) -->
         <svg class="floating-icon audio-icon-playing" id="audioIconPlaying" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M11 5L6 9H2v6h4l5 4V5z"/>
-          <path d="M15.5 8.5a5 5 0 0 1 0 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <path d="M18.5 5.5a9.5 9.5 0 0 1 0 13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M11 5L6 9H2v6h4l5 4V5z" />
+          <path d="M15.5 8.5a5 5 0 0 1 0 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          <path d="M18.5 5.5a9.5 9.5 0 0 1 0 13" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" />
         </svg>
         <!-- Paused / Muted State -->
-        <svg class="floating-icon audio-icon-paused" id="audioIconPaused" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
-          <path d="M11 5L6 9H2v6h4l5 4V5z" fill="currentColor"/>
+        <svg class="floating-icon audio-icon-paused" id="audioIconPaused" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+          <path d="M11 5L6 9H2v6h4l5 4V5z" fill="currentColor" />
           <line x1="23" y1="9" x2="17" y2="15"></line>
           <line x1="17" y1="9" x2="23" y2="15"></line>
         </svg>
       </button>
 
       <!-- Pill Auto-Scroll Button -->
-      <button class="floating-btn floating-auto-scroll-btn" id="btnAutoScroll" aria-label="Gulir Otomatis" title="Gulir Otomatis">
+      <button class="floating-btn floating-auto-scroll-btn" id="btnAutoScroll" aria-label="Gulir Otomatis"
+        title="Gulir Otomatis">
         <!-- Circular Cycle Arrows -->
-        <svg class="floating-icon cycle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+        <svg class="floating-icon cycle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+          stroke-linecap="round" stroke-linejoin="round">
           <path d="M21 2v6h-6"></path>
           <path d="M3 12a9 9 0 0 1 15-6.7L21 8"></path>
           <path d="M3 22v-6h6"></path>
@@ -345,7 +375,8 @@
         <!-- Label: Auto -->
         <span class="auto-text">Auto</span>
         <!-- Down Chevron -->
-        <svg class="floating-icon chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+        <svg class="floating-icon chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"
+          stroke-linecap="round" stroke-linejoin="round">
           <polyline points="6 9 12 15 18 9"></polyline>
         </svg>
       </button>
@@ -360,6 +391,7 @@
   <audio id="bgMusicAudio" src="music.mp3" preload="auto" loop autoplay playsinline webkit-playsinline></audio>
 
   <!-- Main Cinematic Orchestrator -->
-  <script src="script.js?v=20261127_0940"></script>
+  <script src="script.js?v=20261127_0950"></script>
 </body>
+
 </html>

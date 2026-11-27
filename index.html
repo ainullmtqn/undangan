@@ -16,7 +16,7 @@
     href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&family=Noto+Sans+Buginese:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
     rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css?v=20261127_1025">
+  <link rel="stylesheet" href="style.css?v=20261127_1030">
 </head>
 
 <body>
@@ -179,37 +179,42 @@
               Dengan penuh rasa syukur dan memohon ridho Allah SWT, kami mengundang Bapak/Ibu/Saudara/i untuk hadir dan
               merayakan hari istimewa pernikahan kami:
             </p>
-            <div class="wedding-date-highlight">
-              <span class="date-digits">20 . 12 . 2026</span>
-              <span class="date-day-label">Ahad, 20 Desember 2026</span>
-            </div>
-
-            <!-- Rangkaian Jadwal Acara (Akad Nikah & Resepsi) -->
-            <div class="event-schedule-grid">
-              <!-- Akad Nikah Card -->
-              <div class="event-schedule-card">
-                <div class="event-schedule-icon-wrap">
-                  <svg class="event-schedule-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <!-- Rangkaian Jadwal Acara: Akad Nikah (Kiri) - Tanggal (Tengah) - Resepsi (Kanan) -->
+            <div class="wedding-trio-schedule">
+              <!-- Sisi Kiri: Akad Nikah -->
+              <div class="trio-col trio-event-col trio-akad">
+                <div class="trio-icon-wrap">
+                  <svg class="trio-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="9" cy="12" r="5.2"></circle>
                     <circle cx="15" cy="12" r="5.2"></circle>
                   </svg>
                 </div>
-                <h3 class="event-schedule-label">Akad Nikah</h3>
-                <div class="event-schedule-time">11.00 WITA</div>
-                <div class="event-schedule-period">s/d Selesai</div>
+                <h3 class="trio-label">Akad Nikah</h3>
+                <div class="trio-time">11.00 WITA</div>
+                <div class="trio-period">s/d Selesai</div>
               </div>
 
-              <!-- Resepsi Card -->
-              <div class="event-schedule-card highlight-card">
-                <div class="event-schedule-icon-wrap">
-                  <svg class="event-schedule-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <!-- Sisi Tengah: Tanggal Pernikahan -->
+              <div class="trio-col trio-date-col">
+                <div class="trio-day-label">Ahad</div>
+                <div class="trio-date-box">
+                  <span class="trio-date-num">20</span>
+                </div>
+                <div class="trio-month-label">Desember</div>
+                <div class="trio-year-label">2026</div>
+              </div>
+
+              <!-- Sisi Kanan: Resepsi (Pesta Malam) -->
+              <div class="trio-col trio-event-col trio-resepsi">
+                <div class="trio-icon-wrap highlight-icon">
+                  <svg class="trio-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                     <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
                   </svg>
                 </div>
-                <h3 class="event-schedule-label">Resepsi</h3>
-                <div class="event-schedule-time">16.00 WITA</div>
-                <div class="event-schedule-period">s/d Selesai</div>
-                <span class="event-schedule-tag">Pesta Malam</span>
+                <h3 class="trio-label">Resepsi</h3>
+                <div class="trio-time">16.00 WITA</div>
+                <div class="trio-period">s/d Selesai</div>
+                <span class="trio-badge">Pesta Malam</span>
               </div>
             </div>
 
@@ -412,7 +417,7 @@
   <audio id="bgMusicAudio" src="music.mp3" preload="auto" loop autoplay playsinline webkit-playsinline></audio>
 
   <!-- Main Cinematic Orchestrator -->
-  <script src="script.js?v=20261127_1025"></script>
+  <script src="script.js?v=20261127_1030"></script>
 </body>
 
 </html>

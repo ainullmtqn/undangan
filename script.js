@@ -280,7 +280,7 @@ function initApp() {
     clearTimeout(openScrollTimeout);
     openScrollTimeout = setTimeout(() => {
       startAutoScroll();
-    }, 850);
+    }, 1400);
   }
 
   // Close Sheet & Stop Scrolling
@@ -813,7 +813,7 @@ function initApp() {
     } else {
       openScrollTimeout = setTimeout(() => {
         startAutoScroll();
-      }, 850);
+      }, 1400);
     }
   }
 }

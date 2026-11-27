@@ -907,17 +907,17 @@ body {
   display: none;
 }
 
-/* Section 1: Couple Hero Full-Width Banner with Soft Feathered Top & Bottom Between Names */
+/* Section 1: Couple Hero Full-Width Banner Seamlessly Reaching Names */
 .couple-hero-banner {
   position: relative;
   width: calc(100% + 36px);
   margin-left: -18px;
   margin-right: -18px;
-  margin-top: 8px;
-  margin-bottom: 12px;
-  height: clamp(380px, 50vh, 460px);
+  margin-top: -24px;
+  margin-bottom: -18px;
+  height: clamp(430px, 56vh, 520px);
   overflow: hidden;
-  z-index: 2;
+  z-index: 1;
   pointer-events: none;
 }
 
@@ -927,8 +927,8 @@ body {
   object-fit: cover;
   object-position: center 20%;
   display: block;
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 88%, transparent 100%);
-  mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 88%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 16%, #000 84%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 16%, #000 84%, transparent 100%);
 }
 
 .parents-honor-box {

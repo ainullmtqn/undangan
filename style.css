@@ -1048,6 +1048,115 @@ body {
   margin-top: 4px;
 }
 
+/* Event Schedule Grid (Akad Nikah & Resepsi) */
+.event-schedule-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin: 16px 0 18px 0;
+}
+
+@media (max-width: 320px) {
+  .event-schedule-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
+
+.event-schedule-card {
+  background: linear-gradient(135deg, rgba(253, 250, 245, 0.95), rgba(247, 240, 229, 0.95));
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  border-radius: 10px;
+  padding: 14px 8px 12px 8px;
+  position: relative;
+  text-align: center;
+  box-shadow: 0 4px 14px rgba(60, 45, 35, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.event-schedule-card.highlight-card {
+  background: linear-gradient(135deg, rgba(255, 252, 247, 0.98), rgba(245, 236, 222, 0.98));
+  border: 1.2px solid rgba(168, 108, 78, 0.55);
+  box-shadow: 0 4px 16px rgba(168, 108, 78, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.event-schedule-icon-wrap {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(212, 175, 55, 0.12);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #a86c4e;
+  margin-bottom: 6px;
+}
+
+.event-schedule-card.highlight-card .event-schedule-icon-wrap {
+  background: rgba(140, 63, 73, 0.1);
+  border-color: rgba(140, 63, 73, 0.3);
+  color: #8c3f49;
+}
+
+.event-schedule-svg {
+  width: 17px;
+  height: 17px;
+}
+
+.event-schedule-label {
+  font-family: 'Cinzel', 'Playfair Display', var(--font-serif);
+  font-size: 12.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #8c3f49;
+  margin: 0 0 4px 0;
+}
+
+.event-schedule-time {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #241712;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+}
+
+.event-schedule-period {
+  font-family: var(--font-serif);
+  font-size: 11.5px;
+  color: #6a5347;
+  font-style: italic;
+  margin-top: 2px;
+}
+
+.event-schedule-tag {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 2px 8px;
+  background: rgba(168, 108, 78, 0.12);
+  border: 0.8px solid rgba(168, 108, 78, 0.35);
+  border-radius: 12px;
+  font-size: 10.5px;
+  font-weight: 600;
+  color: #8c3f49;
+  letter-spacing: 0.04em;
+}
+
+.venue-note {
+  font-family: var(--font-serif);
+  font-size: 12px;
+  font-style: italic;
+  color: #8c5d45;
+  margin: -6px 0 14px 0;
+  letter-spacing: 0.02em;
+}
+
 /* Section 3: Venue & Location on Antique Tray */
 .antique-tray-container {
   background: #ffffff;

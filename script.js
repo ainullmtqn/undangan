@@ -551,8 +551,8 @@ function initApp() {
     }
   }
 
-  // Live Countdown Timer to December 20, 2026
-  const targetDate = new Date('2026-12-20T09:00:00+08:00').getTime();
+  // Live Countdown Timer to December 20, 2026 (Akad Nikah 11.00 WITA)
+  const targetDate = new Date('2026-12-20T11:00:00+08:00').getTime();
   const daysEl = document.getElementById('daysNum');
   const hoursEl = document.getElementById('hoursNum');
   const minsEl = document.getElementById('minsNum');

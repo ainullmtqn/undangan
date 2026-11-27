@@ -1075,7 +1075,7 @@ body {
 }
 
 .whimsical-col.col-date .whimsical-top-content {
-  min-height: 62px;
+  min-height: 54px;
 }
 
 .whimsical-bottom-content {
@@ -1084,6 +1084,10 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 58px;
+}
+
+.whimsical-col.col-date .whimsical-bottom-content {
+  padding-top: 4px;
 }
 
 .whimsical-time {
@@ -1117,22 +1121,30 @@ body {
 
 .whimsical-day-label {
   font-family: var(--font-serif);
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: #8c5d45;
+  letter-spacing: 0.16em;
+  color: #7b3828;
   line-height: 1.1;
+  margin-bottom: 1px;
+}
+
+.whimsical-date-num {
+  font-family: 'Cinzel', serif;
+  font-size: 38px;
+  font-weight: 700;
+  color: #241712;
+  line-height: 1;
   margin-bottom: 1px;
 }
 
 .whimsical-month-label {
   font-family: 'Alex Brush', cursive;
-  font-size: 23px;
-  font-weight: 600;
-  color: #b26857;
+  font-size: 24px;
+  font-weight: 400;
+  color: #7b3828;
   line-height: 1.05;
-  margin-top: 1px;
   white-space: nowrap;
 }
 

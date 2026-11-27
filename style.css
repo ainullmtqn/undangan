@@ -894,25 +894,17 @@ body {
 
 .hero-calligraphy-sub {
   font-family: 'Alex Brush', cursive;
-  font-size: 24px;
+  font-size: 26px;
   color: #a86c4e;
   letter-spacing: 0.04em;
-  margin-bottom: -4px;
+  margin-bottom: 2px;
   position: relative;
   z-index: 3;
   text-shadow: 0 1px 8px rgba(250, 247, 242, 0.95);
 }
 
 .hero-calligraphy-names {
-  font-family: 'Alex Brush', cursive;
-  font-size: 46px;
-  color: #241712;
-  margin: -4px 0 0 0;
-  font-weight: 400;
-  line-height: 1.1;
-  text-shadow: 0 2px 10px rgba(250, 247, 242, 0.95), 0 0 15px rgba(255, 255, 255, 0.9);
-  position: relative;
-  z-index: 3;
+  display: none;
 }
 
 /* Section 1: Couple Hero Full-Width Banner with Soft Feathered Top & Bottom Between Names */
@@ -921,9 +913,9 @@ body {
   width: calc(100% + 36px);
   margin-left: -18px;
   margin-right: -18px;
-  margin-top: 14px;
-  margin-bottom: 8px;
-  height: clamp(340px, 46vh, 420px);
+  margin-top: 8px;
+  margin-bottom: 12px;
+  height: clamp(380px, 50vh, 460px);
   overflow: hidden;
   z-index: 2;
   pointer-events: none;
@@ -944,8 +936,8 @@ body {
   z-index: 3;
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  margin-top: 0;
+  gap: 0;
+  margin-top: 2px;
 }
 
 .honor-card {

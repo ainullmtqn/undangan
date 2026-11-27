@@ -1022,81 +1022,112 @@ body {
   margin: 0;
 }
 
-/* Section 2: Wedding Trio Schedule (Akad Nikah - Tanggal - Resepsi) */
-.wedding-trio-schedule {
-  display: grid;
-  grid-template-columns: 1fr 1.08fr 1fr;
-  align-items: stretch;
-  background: linear-gradient(135deg, rgba(254, 252, 248, 0.98), rgba(247, 241, 232, 0.95));
-  border: 1px solid rgba(212, 175, 55, 0.45);
-  border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(60, 45, 35, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.95);
-  margin: 16px 0 18px 0;
-  overflow: hidden;
+/* Section 2: Timeline Tali Terbentang (Akad Nikah - Tanggal - Resepsi) */
+.timeline-rope-section {
   position: relative;
+  width: 100%;
+  margin: 18px 0 16px 0;
+  padding: 12px 0 4px 0;
 }
 
-.trio-col {
-  padding: 14px 4px 12px 4px;
+/* Tali Horisontal yang Terbentang Kiri-Kanan */
+.timeline-rope-line {
+  position: absolute;
+  top: 26px;
+  left: 6px;
+  right: 6px;
+  height: 2.5px;
+  background: repeating-linear-gradient(
+    45deg,
+    #d4af37,
+    #d4af37 4px,
+    #9c6f3b 4px,
+    #9c6f3b 8px
+  );
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(60, 45, 35, 0.2);
+  z-index: 1;
+}
+
+/* Titik simpul / pin gantungan di ujung tali kiri dan kanan */
+.timeline-rope-line::before,
+.timeline-rope-line::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fdeec4 25%, #b8860b 80%, #664614 100%);
+  border: 1px solid #784814;
+  box-shadow: 0 2px 4px rgba(60, 45, 35, 0.35);
+}
+
+.timeline-rope-line::before {
+  left: -5px;
+}
+
+.timeline-rope-line::after {
+  right: -5px;
+}
+
+/* Grid 3 Kolom */
+.timeline-rope-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.05fr 1fr;
+  align-items: start;
+  position: relative;
+  z-index: 2;
+  gap: 2px;
+}
+
+.timeline-rope-node {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   text-align: center;
-  position: relative;
 }
 
-.trio-event-col {
-  transition: transform 0.2s ease;
-}
-
-/* Garis pembatas emas halus di antara kolom */
-.trio-akad {
-  border-right: 1px solid rgba(212, 175, 55, 0.35);
-}
-
-.trio-resepsi {
-  border-left: 1px solid rgba(212, 175, 55, 0.35);
-}
-
-.trio-icon-wrap {
+/* Pin / Gantungan Akad & Resepsi pada Tali */
+.rope-node-pin {
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background: rgba(212, 175, 55, 0.12);
-  border: 1px solid rgba(212, 175, 55, 0.35);
+  background: #ffffff;
+  border: 1.5px solid #d4af37;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #a86c4e;
+  box-shadow: 0 2px 6px rgba(60, 45, 35, 0.15);
   margin-bottom: 5px;
+  position: relative;
 }
 
-.trio-icon-wrap.highlight-icon {
-  background: rgba(140, 63, 73, 0.1);
-  border-color: rgba(140, 63, 73, 0.3);
+.rope-node-pin.resepsi-pin {
+  border-color: #8c3f49;
   color: #8c3f49;
 }
 
-.trio-svg {
+.rope-svg-icon {
   width: 15px;
   height: 15px;
 }
 
-.trio-label {
+.rope-node-title {
   font-family: 'Cinzel', 'Playfair Display', var(--font-serif);
   font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: #8c3f49;
-  margin: 0 0 3px 0;
+  margin: 0 0 2px 0;
   white-space: nowrap;
 }
 
-.trio-time {
+.rope-node-time {
   font-family: 'Montserrat', sans-serif;
-  font-size: 12px;
+  font-size: 12.5px;
   font-weight: 700;
   color: #241712;
   letter-spacing: 0.01em;
@@ -1104,7 +1135,7 @@ body {
   white-space: nowrap;
 }
 
-.trio-period {
+.rope-node-period {
   font-family: var(--font-serif);
   font-size: 10.5px;
   color: #6a5347;
@@ -1113,10 +1144,10 @@ body {
   white-space: nowrap;
 }
 
-.trio-badge {
+.rope-node-badge {
   display: inline-block;
-  margin-top: 5px;
-  padding: 1.5px 5px;
+  margin-top: 4px;
+  padding: 1px 6px;
   background: rgba(168, 108, 78, 0.12);
   border: 0.8px solid rgba(168, 108, 78, 0.35);
   border-radius: 10px;
@@ -1127,60 +1158,70 @@ body {
   white-space: nowrap;
 }
 
-/* Kolom Tengah: Tanggal */
-.trio-date-col {
-  background: rgba(255, 255, 255, 0.55);
+/* Tag Tanggal di Bagian Tengah yang Tergantung pada Tali */
+.rope-date-tag {
+  background: #ffffff;
+  border: 1.2px solid rgba(212, 175, 55, 0.7);
+  border-radius: 6px;
+  padding: 4px 8px 5px 8px;
+  box-shadow: 0 3px 10px rgba(60, 45, 35, 0.1);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 76px;
 }
 
-.trio-day-label {
+/* Klip Emas Pengait Tag ke Tali */
+.rope-date-clip {
+  position: absolute;
+  top: -8px;
+  width: 12px;
+  height: 9px;
+  background: linear-gradient(to bottom, #d4af37, #9c6f3b);
+  border-radius: 2px 2px 0 0;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+.rope-date-day {
   font-family: var(--font-serif);
-  font-size: 11px;
-  font-weight: 600;
+  font-size: 10.5px;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: #8c5d45;
-  margin-bottom: 2px;
+  margin-top: 2px;
   line-height: 1;
 }
 
-.trio-date-box {
-  width: 44px;
-  height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-top: 1.5px solid #d4af37;
-  border-bottom: 1.5px solid #d4af37;
-  margin: 3px 0 4px 0;
-}
-
-.trio-date-num {
+.rope-date-num {
   font-family: 'Cinzel', 'Playfair Display', var(--font-serif);
   font-size: 26px;
   font-weight: 700;
   color: #241712;
-  line-height: 1;
+  line-height: 1.05;
+  margin: 1px 0;
   letter-spacing: 0.02em;
 }
 
-.trio-month-label {
+.rope-date-month {
   font-family: var(--font-serif);
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: #241712;
+  color: #8c3f49;
   line-height: 1.1;
   white-space: nowrap;
 }
 
-.trio-year-label {
+.rope-date-year {
   font-family: var(--font-serif);
-  font-size: 10px;
+  font-size: 9.5px;
   font-weight: 600;
   color: #8c5d45;
   letter-spacing: 0.08em;
-  margin-top: 1px;
   line-height: 1;
 }
 

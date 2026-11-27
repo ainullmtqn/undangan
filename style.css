@@ -913,7 +913,7 @@ body {
   width: calc(100% + 36px);
   margin-left: -18px;
   margin-right: -18px;
-  margin-top: -24px;
+  margin-top: -6px;
   margin-bottom: -18px;
   height: clamp(430px, 56vh, 520px);
   overflow: hidden;
@@ -927,8 +927,8 @@ body {
   object-fit: cover;
   object-position: center 20%;
   display: block;
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 16%, #000 84%, transparent 100%);
-  mask-image: linear-gradient(to bottom, transparent 0%, #000 16%, #000 84%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 84%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 84%, transparent 100%);
 }
 
 .parents-honor-box {

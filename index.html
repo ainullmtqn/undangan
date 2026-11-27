@@ -16,7 +16,7 @@
     href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&family=Noto+Sans+Buginese:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
     rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css?v=20261127_1040">
+  <link rel="stylesheet" href="style.css?v=20261127_1050">
 </head>
 
 <body>
@@ -179,47 +179,86 @@
               Dengan penuh rasa syukur dan memohon ridho Allah SWT, kami mengundang Bapak/Ibu/Saudara/i untuk hadir dan
               merayakan hari istimewa pernikahan kami:
             </p>
-            <!-- Timeline Tali Terbentang: Akad Nikah (Kiri) - Tanggal (Tengah) - Resepsi (Kanan) -->
-            <div class="timeline-rope-section">
-              <!-- Tali Horisontal yang Terbentang Kanan Kiri -->
-              <div class="timeline-rope-line"></div>
+            <!-- Timeline Tali Bergelombang Sesuai Referensi (Akad Nikah - Tanggal - Resepsi) -->
+            <div class="whimsical-timeline-section">
+              <!-- Tali Melingkar / Bergelombang dengan Loop Melintasi Kiri ke Kanan -->
+              <div class="timeline-vine-track">
+                <svg class="whimsical-vine-svg" viewBox="0 0 350 36" preserveAspectRatio="none">
+                  <path d="M 5,18 C 35,26 70,10 105,20 C 111,22 117,24 119,17 C 121,10 114,8 112,14 C 109,22 117,26 130,20 C 160,8 190,28 220,18 C 226,16 232,10 229,5 C 225,1 220,6 222,13 C 225,22 235,24 250,16 C 285,4 320,24 345,16" 
+                        fill="none" stroke="#7d9b68" stroke-width="1.8" stroke-linecap="round"/>
+                  <circle cx="58" cy="16" r="2.5" fill="#7d9b68"/>
+                  <circle cx="175" cy="20" r="2.5" fill="#7d9b68"/>
+                  <circle cx="295" cy="14" r="2.5" fill="#7d9b68"/>
+                </svg>
+              </div>
 
-              <div class="timeline-rope-grid">
-                <!-- Sebelah Kiri: Informasi Akad Nikah -->
-                <div class="timeline-rope-node node-akad">
-                  <div class="rope-node-pin">
-                    <svg class="rope-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                      <circle cx="9" cy="12" r="5.2"></circle>
-                      <circle cx="15" cy="12" r="5.2"></circle>
-                    </svg>
+              <div class="whimsical-timeline-grid">
+                <!-- Sebelah Kiri: Akad Nikah (Teks di Atas, Ikon Cincin di Bawah) -->
+                <div class="whimsical-col col-akad">
+                  <div class="whimsical-top-content">
+                    <div class="whimsical-time">11.00 WITA</div>
+                    <div class="whimsical-title">Akad Nikah</div>
                   </div>
-                  <h3 class="rope-node-title">Akad Nikah</h3>
-                  <div class="rope-node-time">11.00 WITA</div>
-                  <div class="rope-node-period">s/d Selesai</div>
+                  <div class="whimsical-bottom-content">
+                    <svg class="whimsical-illus-svg" viewBox="0 0 54 54" fill="none">
+                      <ellipse cx="22" cy="28" rx="13" ry="13" stroke="#3b2820" stroke-width="1.8" fill="none"/>
+                      <ellipse cx="33" cy="24" rx="13" ry="13" stroke="#3b2820" stroke-width="1.8" fill="none"/>
+                      <path d="M 33,8 L 37,12 L 33,16 L 29,12 Z" stroke="#3b2820" stroke-width="1.5" fill="#fdeec4"/>
+                      <line x1="33" y1="4" x2="33" y2="7" stroke="#e0a96d" stroke-width="1.5" stroke-linecap="round"/>
+                      <line x1="39" y1="9" x2="42" y2="8" stroke="#e0a96d" stroke-width="1.5" stroke-linecap="round"/>
+                      <circle cx="11" cy="38" r="3.5" fill="#f4a261"/>
+                      <circle cx="16" cy="42" r="2.8" fill="#b8a9c9"/>
+                      <path d="M 8,34 C 10,38 14,40 16,45" stroke="#7d9b68" stroke-width="1.4" stroke-linecap="round"/>
+                    </svg>
+                    <div class="whimsical-period">s/d Selesai</div>
+                  </div>
                 </div>
 
-                <!-- Bagian Tengah: Tanggal Pernikahan -->
-                <div class="timeline-rope-node node-date">
-                  <div class="rope-date-tag">
-                    <div class="rope-date-clip"></div>
-                    <div class="rope-date-day">Ahad</div>
-                    <div class="rope-date-num">20</div>
-                    <div class="rope-date-month">Desember</div>
-                    <div class="rope-date-year">2026</div>
+                <!-- Bagian Tengah: Tanggal (Wreath Tanggal 20 di Atas, Ahad 20 Des di Bawah) -->
+                <div class="whimsical-col col-date">
+                  <div class="whimsical-top-content">
+                    <svg class="whimsical-illus-svg date-wreath-svg" viewBox="0 0 60 60" fill="none">
+                      <ellipse cx="30" cy="30" rx="22" ry="22" stroke="#7d9b68" stroke-width="1.5" stroke-dasharray="3 2" fill="none"/>
+                      <path d="M 10,25 C 7,20 12,18 13,22" fill="#7d9b68"/>
+                      <path d="M 8,35 C 5,38 10,41 12,37" fill="#7d9b68"/>
+                      <path d="M 50,25 C 53,20 48,18 47,22" fill="#7d9b68"/>
+                      <path d="M 52,35 C 55,38 50,41 48,37" fill="#7d9b68"/>
+                      <circle cx="30" cy="8" r="3.5" fill="#f4a261"/>
+                      <circle cx="25" cy="6" r="2.5" fill="#b8a9c9"/>
+                      <circle cx="35" cy="6" r="2.5" fill="#f8c291"/>
+                      <circle cx="30" cy="52" r="3.5" fill="#f4a261"/>
+                      <text x="30" y="37" font-family="'Cinzel', serif" font-size="20" font-weight="700" fill="#241712" text-anchor="middle">20</text>
+                    </svg>
+                  </div>
+                  <div class="whimsical-bottom-content">
+                    <div class="whimsical-day-label">Ahad</div>
+                    <div class="whimsical-month-label">Desember 2026</div>
                   </div>
                 </div>
 
-                <!-- Sebelah Kanan: Informasi Resepsi -->
-                <div class="timeline-rope-node node-resepsi">
-                  <div class="rope-node-pin resepsi-pin">
-                    <svg class="rope-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                    </svg>
+                <!-- Sebelah Kanan: Resepsi (Teks di Atas, Ikon Kue Pengantin di Bawah) -->
+                <div class="whimsical-col col-resepsi">
+                  <div class="whimsical-top-content">
+                    <div class="whimsical-time">16.00 WITA</div>
+                    <div class="whimsical-title">Resepsi</div>
                   </div>
-                  <h3 class="rope-node-title">Resepsi</h3>
-                  <div class="rope-node-time">16.00 WITA</div>
-                  <div class="rope-node-period">s/d Selesai</div>
-                  <span class="rope-node-badge">Pesta Malam</span>
+                  <div class="whimsical-bottom-content">
+                    <svg class="whimsical-illus-svg" viewBox="0 0 54 54" fill="none">
+                      <rect x="8" y="32" width="38" height="15" rx="3" stroke="#3b2820" stroke-width="1.8" fill="#ffffff"/>
+                      <path d="M 12,38 C 18,42 24,37 30,41 C 36,37 42,41 44,38" stroke="#3b2820" stroke-width="1.2" stroke-linecap="round"/>
+                      <rect x="14" y="20" width="26" height="13" rx="2" stroke="#3b2820" stroke-width="1.8" fill="#ffffff"/>
+                      <path d="M 17,25 C 22,28 28,24 33,27 C 37,25 39,26 40,25" stroke="#3b2820" stroke-width="1.2" stroke-linecap="round"/>
+                      <rect x="20" y="10" width="14" height="11" rx="2" stroke="#3b2820" stroke-width="1.8" fill="#ffffff"/>
+                      <circle cx="27" cy="6" r="3.5" fill="#f4a261"/>
+                      <circle cx="23" cy="8" r="2.5" fill="#b8a9c9"/>
+                      <circle cx="31" cy="8" r="2.5" fill="#ff7675"/>
+                      <path d="M 28,2 C 29,6 27,8 26,10" stroke="#7d9b68" stroke-width="1.2"/>
+                      <circle cx="43" cy="22" r="3" fill="#f4a261"/>
+                      <circle cx="46" cy="26" r="2.5" fill="#b8a9c9"/>
+                      <circle cx="6" cy="34" r="2.8" fill="#b8a9c9"/>
+                    </svg>
+                    <div class="whimsical-period">(Pesta Malam)</div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -423,7 +462,7 @@
   <audio id="bgMusicAudio" src="music.mp3" preload="auto" loop autoplay playsinline webkit-playsinline></audio>
 
   <!-- Main Cinematic Orchestrator -->
-  <script src="script.js?v=20261127_1040"></script>
+  <script src="script.js?v=20261127_1050"></script>
 </body>
 
 </html>

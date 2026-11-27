@@ -586,40 +586,19 @@ function initApp() {
   const rsvpStatusAlert = document.getElementById('rsvpStatusAlert');
   const wishesList = document.getElementById('wishesList');
 
+  // Bersihkan cache pesan lokal sebelumnya yang tidak masuk database
   const STORAGE_KEY_WISHES = 'wedding_wishes_niar_reski';
-  const DEFAULT_WISHES = [
-    {
-      name: "Keluarga Besar Rahmat",
-      text: "Selamat berbahagia untuk Niar & Reski! Semoga menjadi keluarga yang sakinah, mawaddah, warahmah."
-    },
-    {
-      name: "Sahabat Teknik",
-      text: "Barakallahu lakum wa baraka alaikum wa jama'a bainakuma fi khair. Lancar sampai hari H!"
-    }
-  ];
+  try {
+    localStorage.removeItem(STORAGE_KEY_WISHES);
+  } catch (err) {}
 
   let cloudWishes = [];
+  let isFetchingCloudWishes = false;
 
-  function getStoredWishes() {
-    try {
-      const data = localStorage.getItem(STORAGE_KEY_WISHES);
-      return data ? JSON.parse(data) : [];
-    } catch (err) {
-      return [];
-    }
-  }
-
-  function saveWishLocal(name, text) {
-    try {
-      const current = getStoredWishes();
-      current.unshift({ name, text, date: new Date().toLocaleDateString('id-ID') });
-      localStorage.setItem(STORAGE_KEY_WISHES, JSON.stringify(current));
-    } catch (err) {}
-  }
-
-  // Ambil ucapan dari Google Sheets Database (Dapat dilihat oleh semua tamu)
+  // Ambil ucapan dari Google Sheets Database (Hanya pesan asli dari database)
   async function fetchCloudWishes() {
-    if (!GOOGLE_SCRIPT_URL) return;
+    if (!GOOGLE_SCRIPT_URL || isFetchingCloudWishes) return;
+    isFetchingCloudWishes = true;
     try {
       const response = await fetch(GOOGLE_SCRIPT_URL, { redirect: 'follow' });
       if (response.ok) {
@@ -633,17 +612,19 @@ function initApp() {
           items = raw.wishes;
         }
 
-        if (items.length > 0) {
-          cloudWishes = items.map(it => ({
-            name: it.name || it.nama || 'Tamu Undangan',
-            text: it.text || it.wish || it.pesan || it.message || '',
-            date: it.date || it.timestamp || it.waktu || ''
-          })).filter(it => it.text);
-          renderWishesList();
-        }
+        cloudWishes = items.map(it => ({
+          name: it.name || it.nama || 'Tamu Undangan',
+          text: it.text || it.wish || it.pesan || it.message || '',
+          date: it.date || it.timestamp || it.waktu || ''
+        })).filter(it => it.text);
+
+        renderWishesList();
       }
     } catch (err) {
-      console.warn('Info: Menampilkan ucapan offline/lokal.', err);
+      console.warn('Info: Menghubungi Google Sheets database...', err);
+      renderWishesList();
+    } finally {
+      isFetchingCloudWishes = false;
     }
   }
 
@@ -668,33 +649,26 @@ function initApp() {
       });
       // Sinkronisasi ulang daftar pesan dari cloud setelah pengiriman
       setTimeout(fetchCloudWishes, 1500);
-      setTimeout(fetchCloudWishes, 4000);
+      setTimeout(fetchCloudWishes, 3500);
     } catch (err) {
-      console.warn('Gagal menyimpan ke Google Sheets, data tetap aman di lokal:', err);
+      console.warn('Gagal menyimpan ke Google Sheets:', err);
     }
   }
 
   function renderWishesList() {
     if (!wishesList) return;
-    const userWishes = getStoredWishes();
 
-    // Gabungkan ucapan dari cloud (semua tamu), lokal, dan default dengan deduplikasi
-    const combined = [];
-    const seen = new Set();
-
-    [...cloudWishes, ...userWishes, ...DEFAULT_WISHES].forEach(item => {
-      const name = (item.name || item.nama || '').trim();
-      const text = (item.text || item.wish || item.pesan || '').trim();
-      const date = item.date || item.timestamp || item.waktu || '';
-      const key = `${name.toLowerCase()}_${text.toLowerCase()}`;
-      if (!seen.has(key) && name && text) {
-        seen.add(key);
-        combined.push({ name, text, date });
-      }
-    });
+    if (!cloudWishes || cloudWishes.length === 0) {
+      wishesList.innerHTML = `
+        <div class="wish-item-empty" style="text-align: center; color: #8c7365; font-size: 13px; font-style: italic; padding: 22px 14px; background: rgba(255, 255, 255, 0.45); border-radius: 8px; border: 1px dashed rgba(184, 134, 11, 0.35);">
+          Belum ada doa restu di dalam database.<br>Jadilah yang pertama memberikan ucapan manis untuk kedua mempelai! ✨
+        </div>
+      `;
+      return;
+    }
 
     wishesList.innerHTML = '';
-    combined.forEach(item => {
+    cloudWishes.forEach(item => {
       const el = document.createElement('div');
       el.className = 'wish-item-vintage';
 
@@ -749,8 +723,12 @@ function initApp() {
       return;
     }
 
-    // 1. Simpan di lokal agar langsung terlihat seketika (optimistic UI)
-    saveWishLocal(name, wish);
+    // 1. Tampilkan langsung ke antarmuka seketika (Optimistic UI)
+    cloudWishes.unshift({
+      name: name,
+      text: wish,
+      date: new Date().toLocaleDateString('id-ID')
+    });
     renderWishesList();
 
     // 2. Kirim ke Google Sheets di latar belakang

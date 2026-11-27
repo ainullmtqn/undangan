@@ -980,7 +980,7 @@ body {
   background: #ffffff;
   color: #3b2820;
   border-radius: 8px;
-  padding: 26px 18px 20px 18px;
+  padding: 26px clamp(10px, 3.5vw, 18px) 20px clamp(10px, 3.5vw, 18px);
   position: relative;
   box-shadow: 0 10px 30px rgba(60, 45, 35, 0.08), 0 1px 3px rgba(0, 0, 0, 0.04);
   border: 1px solid rgba(212, 175, 55, 0.4);
@@ -1051,7 +1051,7 @@ body {
 /* 3-Column Undulating Grid */
 .whimsical-timeline-grid {
   display: grid;
-  grid-template-columns: 1fr 1.25fr 1fr;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
   position: relative;
   z-index: 2;
@@ -1075,6 +1075,8 @@ body {
 }
 
 .whimsical-col.col-date .whimsical-top-content {
+  justify-content: flex-end;
+  padding-bottom: 2px;
   min-height: 54px;
 }
 
@@ -1087,7 +1089,9 @@ body {
 }
 
 .whimsical-col.col-date .whimsical-bottom-content {
-  padding-top: 4px;
+  justify-content: center;
+  padding-top: 6px;
+  min-height: 58px;
 }
 
 .whimsical-time {
@@ -1103,7 +1107,7 @@ body {
 .whimsical-title {
   font-family: 'Alex Brush', cursive;
   font-size: 21px;
-  color: #b26857;
+  color: #7b3828;
   margin-top: 1px;
   line-height: 1.1;
   white-space: nowrap;
@@ -1121,31 +1125,33 @@ body {
 
 .whimsical-day-label {
   font-family: var(--font-serif);
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.16em;
-  color: #7b3828;
-  line-height: 1.1;
-  margin-bottom: 1px;
+  color: #8c5d45;
+  line-height: 1;
+  margin-bottom: 2px;
+  white-space: nowrap;
 }
 
 .whimsical-date-num {
   font-family: 'Cinzel', serif;
-  font-size: 38px;
+  font-size: 34px;
   font-weight: 700;
-  color: #241712;
+  color: #7b3828;
   line-height: 1;
   margin-bottom: 1px;
 }
 
 .whimsical-month-label {
   font-family: 'Alex Brush', cursive;
-  font-size: 24px;
+  font-size: 25px;
   font-weight: 400;
   color: #7b3828;
-  line-height: 1.05;
+  line-height: 1.1;
   white-space: nowrap;
+  text-align: center;
 }
 
 .whimsical-illus-svg {
